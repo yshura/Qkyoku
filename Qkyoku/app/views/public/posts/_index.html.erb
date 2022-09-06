@@ -1,0 +1,24 @@
+<table class='table' border='2' style='font-size: 13pt; line-height: 50%;'>
+     <thead bgcolor="#f5f5f5">
+       <tr>
+         <th>投稿日</th>
+         <th>投稿者</th>
+         <th>工程</th>
+         <th>タイトル</th>
+         <th>ステータス</th>
+         <th>チェック</th>
+       </tr>
+     </thead>
+     <tbody>
+       <% posts.each do |post| %>
+           <tr>
+             <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+             <td><%= post.user.name %></td>
+             <td><%= post.section.name %></td>
+             <td><%= link_to post.title, public_post_path(post.id) %></td>
+             <td></td>
+             <td></td>
+           </tr>
+       <% end %>
+     </tbody>
+</table>

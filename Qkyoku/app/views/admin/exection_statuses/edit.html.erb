@@ -1,0 +1,12 @@
+<div class='col-md-4 mt-4 mb-3'  style='display:flex; flex-wrap:wrap;'>
+  <h2>ステータス名編集</h2>
+</div>
+<%= form_with model: @exection_status, url: admin_exection_status_path(@exection_status.id), method: :patch, local:true do |f| %>
+  <div class='form-group'>
+    <%= f.label 'ステータス名' %>
+    <%= f.text_field :name, class: 'form-control name', placeholder: 'ステータスを入力' %>
+　</div>
+　<div class="form-group">
+    <%= f.submit "更新", class: 'btn btn-success' %>
+  </div>
+<% end %>

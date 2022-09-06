@@ -1,0 +1,20 @@
+<div class='col-md-4 mt-4 mb-3'>
+  <h2>投稿詳細</h2>
+</div>
+<p><%= @post.user.name %></P>
+<p><%= @post.section.name %></p>
+<p><%= @post.created_at.strftime('%Y/%m/%d') %></p>
+<p><%= @post.title %></p>
+<p><%#= image_tag @post.image, size:"150x200" %></p>
+<p><%= @post.post_body %></p>
+<div><%=link_to 'コメント', new_public_comment_path %></div>
+
+<div class='col-md-4 mt-4 mb-3'>
+  <h2>コメント</h2>
+</div>
+<% @comments.each do |comment| %>
+  <tr>
+    <td><%= comment.user.name %></td>
+    <td><%= comment.comment_body %></td>
+  </tr>
+<% end %>
