@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
-    has_many :comments
-    has_many :checks
+    has_many :comments, dependent: :destroy
+    has_many :checks, dependent: :destroy
     belongs_to :user
     belongs_to :section
     has_one_attached :image

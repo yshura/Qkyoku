@@ -14,9 +14,22 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-import "jquery";
+// import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application" 
+
+import Rails from "@rails/ujs"
+import Turbolinks from "turbolinks"
+import * as ActiveStorage from "@rails/activestorage"
+// import "channels"
+
+// ここから追加
+require("jquery")
+// こまで追加
+
+Rails.start()
+Turbolinks.start()
+ActiveStorage.start()
 
 console.log('Hello World from Webpacker')

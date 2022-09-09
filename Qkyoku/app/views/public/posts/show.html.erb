@@ -1,20 +1,42 @@
-<div class='col-md-4 mt-4 mb-3'>
-  <h2>投稿詳細</h2>
-</div>
-<p><%= @post.user.name %></P>
-<p><%= @post.section.name %></p>
-<p><%= @post.created_at.strftime('%Y/%m/%d') %></p>
-<p><%= @post.title %></p>
-<p><%#= image_tag @post.image, size:"150x200" %></p>
-<p><%= @post.post_body %></p>
-<div><%=link_to 'コメント', new_public_comment_path %></div>
-
-<div class='col-md-4 mt-4 mb-3'>
-  <h2>コメント</h2>
-</div>
-<% @comments.each do |comment| %>
-  <tr>
-    <td><%= comment.user.name %></td>
-    <td><%= comment.comment_body %></td>
-  </tr>
-<% end %>
+<div class='container'>    
+    <div class='col-md-4 mt-4 mb-3'>
+      <h2>投稿詳細</h2>
+    </div>
+    <td><%= @post.user.name %></td>
+    <td><%= @post.section.name %><td>
+    <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
+    <p><%= @post.title %></p>
+    <p><%#= image_tag @post.image, size:'150x200' %></p>
+    <p><%= @post.post_body %></p>
+    <div><%=link_to 'コメント', new_public_post_comment_path(@post) %></div>
+    <% if @post.user == current_user %>
+      <%= link_to '編集', edit_public_post_path(@post), method: :get %>
+      <%= link_to '削除', public_post_path(@post), method: :delete %>
+    <% end %>
+    <%#= @check ? '既読' : '未読' %>
+    
+    <div class='col-md-4 mt-4 mb-3'>
+      <h2>コメント</h2>
+    </div>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.user.name %></td>
+          <td><%= comment.execution_status.name %></td>
+          <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+          <p><%#= image_tag comment.image, size:'150x200' %></p>
+          <td><%= comment.comment_body %></td>
+          <% if comment.favorited_by?(current_user) %>
+              <%= link_to public_post_comment_favorite_path(@post, comment), method: :delete do %>
+                <span style='color:red;'>♥<%= comment.favorites.count %></span>
+              <% end %>
+          <% else %>
+              <%= link_to public_post_comment_favorites_path(@post, comment), method: :post do %>
+                <span>♡<%= comment.favorites.count %>︎</span>
+              <% end %>
+          <% end %>
+          <% if comment.user == current_user %>
+              <%= link_to '編集', edit_public_post_comment_path(@post, comment) %>
+          <% end %>
+        </tr>
+      <% end %>
+  </div>

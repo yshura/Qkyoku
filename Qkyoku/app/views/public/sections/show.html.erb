@@ -1,0 +1,39 @@
+<div class='container'>
+  <div class='row'>
+    <table class='table col-md-2' border='2' style='font-size: 13pt;'>
+      <tbody>
+        <% @sections.each do |section| %>
+          <tr>
+            <th>
+              <%= link_to public_section_path(section) do %>
+                <%= section.name %>
+              <% end %>
+            </th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>
+    <div>
+      <h2>投稿詳細</h2>
+    </div>
+      <table class='table col-md-4'>
+        <tbody>
+          <tr>
+            <% @section.posts.each do |post| %>
+              <td>
+                  <%= post.user.name %>
+                  <%= link_to public_post_path(post) do %>
+                    <%= post.title %>
+                  <% end %>
+                  <%= post.created_at.strftime('%Y/%m/%d') %>
+              </td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+ </div>

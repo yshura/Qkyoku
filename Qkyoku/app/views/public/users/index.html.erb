@@ -1,0 +1,17 @@
+<div class='container'>
+  <div class='row'>
+    <table class='table col-md-2' border='2' style='font-size: 13pt;'>
+      <tbody>
+        <% @sections.each do |section| %>
+          <tr>
+            <th>
+              <%= link_to public_section_path(section) do %>
+                <%= section.name %>
+              <% end %>
+            </th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

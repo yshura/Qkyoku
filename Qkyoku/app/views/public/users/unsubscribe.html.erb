@@ -1,0 +1,14 @@
+<div class='col-md-6 mx-auto text-center'>
+  <h5>
+    本当に退会しますか？
+  </h5>
+</div>
+<div class='col-md-6 mt-4 mx-auto text-center'>
+<div class='row'>
+  <div class='col'>
+    <%= link_to '退会する', public_withdrawal_path, class:'btn btn-danger btn-block', method: :patch %>
+  </div>
+  <div class="col">
+    <%= link_to '退会しない', root_path, class:'btn btn-primary btn-block' %>
+  </div> 
+</div>

@@ -1,0 +1,16 @@
+<div class='container'>    
+  <div class='col-md-4 mt-4 mb-3'>
+    <h2>過去のコメント</h2>
+  </div>
+  <table class= "table table-hover table-inveerse">
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.execution_status.name %></td>
+        <td><%= comment.user.name %></td>
+        <td><%= comment.comment_body %></td>
+        <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%#= image_tag comment.image, size:'150x200' %></td>
+      </tr>
+    <% end %>  
+  </table>
+</div>

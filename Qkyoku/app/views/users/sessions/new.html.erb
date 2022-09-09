@@ -1,0 +1,25 @@
+<h2>ログイン</h2>
+
+<%= form_with model: @user, url: user_session_path do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  
+  
+  <div class="field">
+    <%= f.label 'メールアドレス' %><br>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'パスワード' %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= link_to "ゲストユーザ（閲覧用）", users_guest_sign_in_path, method: :post %>
