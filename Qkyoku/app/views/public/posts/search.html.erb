@@ -1,20 +1,25 @@
-<h2>検索結果 "<%= @keyword %>"</h2>
-  <ul>
-    <% @posts.each do |post| %>
-      <li>
-        <%= post.user.name %>
-      </li>
-      <li>
-        <%= post.created_at.strftime('%Y/%m/%d') %>
-      </li>
-      <li>
-        <%= post.section.name %>
-      </li>
-      <li>
-        <%= post.title %>
-      </li>
-      <li>
-        <%= post.comments.count %>件
-      </li>
-    <% end %>
-  </ul>
+<div class='container'>    
+    
+    <h2>検索結果 "<%= @keyword %>"</h2>
+      <div>
+        <% @posts.each do |post| %>
+          <div><%= link_to public_user_path(post.user) do %>
+                 <%= post.user.name %>
+               <% end %>
+          </div>
+          <div>
+            <%= post.created_at.strftime('%Y/%m/%d') %>
+          </div>
+          <div>
+            <%= post.section.name %>
+          </div>
+          <div><%= link_to public_post_path(post) do %>
+                 <%= post.title %>
+               <% end %>
+          </div>
+          <div>
+            <%= post.comments.count %>件
+          </div>
+        <% end %>
+      </div>
+</div>

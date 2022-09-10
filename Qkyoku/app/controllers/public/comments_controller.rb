@@ -1,6 +1,8 @@
 class Public::CommentsController < ApplicationController
   def index
-    @comments = Comment.all
+    @user = User.find(params[:user_id])
+    @comments = @user.comments
+    #@comments = Kaminari.paginate_array(@comments).page(params[:page]).per(10)
   end
   
   def new

@@ -13,11 +13,12 @@ class Public::PostsController < ApplicationController
     if @post.save
     redirect_to public_posts_path(@post)
     else
-    render "new"
+    render 'new'
     end
   end
   
   def show 
+    @user = current_user
     @post = Post.find(params[:id])
     @comments = @post.comments
     # 既読未読機能
@@ -49,7 +50,7 @@ class Public::PostsController < ApplicationController
   
   def search
     if params[:keyword].present?
-      @posts = Post.where('caption LIKE ?', "%#{params[:keyword]}%")
+      @posts = Post.where('title LIKE ?', "%#{params[:keyword]}%")
       @keyword = params[:keyword]
     else
       @posts = Post.all
