@@ -8,8 +8,8 @@ class Comment < ApplicationRecord
     
     has_one_attached :image
     
-    def favorited_by?(user)
-       favorites.exists?(user_id: user.id)
+    def favorited_by(user)
+       favorites.find_by(user_id: user.id)
     end
 
 end

@@ -9,6 +9,6 @@
     <%= link_to '退会する', public_withdrawal_path, class:'btn btn-danger btn-block', method: :patch %>
   </div>
   <div class="col">
-    <%= link_to '退会しない', root_path, class:'btn btn-primary btn-block' %>
+    <%= link_to '退会しない', public_user_path(current_user), class:'btn btn-primary btn-block' %>
   </div> 
 </div>

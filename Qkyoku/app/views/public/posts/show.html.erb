@@ -5,40 +5,41 @@
     </div>
   </div>
 </div>
-<div class='container'>
-  <div class='row'>
-    <p class='col-md-2'><%= @post.user.name %></p>
-    <p class='col-md-4'>工程：<%= @post.section.name %><p>
-    <p class='col-md-6'>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-  </div>
-</div>
-<div class='container'>
-  <div class='row'>
-      <p class='col-6 text-center' style='font-size: 18pt'><%= @post.title %></p>
-  </div>
-</div>
-<div class='container'>
-  <div class='row'>
-      <p class='col-md-4'><% if @post.image.present? %>
-            <%= image_tag @post.image, class:'img-fluid' %>
+<div class='container card'>
+  <div class='card-body'>
+    <div class='row'>
+      <p class='col-md-2'><%= @post.user.name %></p>
+      <p class='col-md-4'>工程：<%= @post.section.name %><p>
+      <p class='col-md-6'>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+    </div>
+    <div class='row no-gutters'>
+        <div clas='col'><h3 class='card-title'><%= @post.title %></h3></div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+          <% if @post.image.present? %>
+            <%= link_to @post.image, "data-lightbox": @post.image do %>  
+              <%= image_tag @post.image, class:'img-fluid' %>
+            <% end %>
           <% else %>
-            <%= image_tag 'no_image.jpg', class:'img-fluid' %>
+              <%= image_tag 'no_image.jpg', class:'img-fluid' %>
           <% end %>
-      </p>
-      <p class='col-md-8'><%= @post.post_body %></p>
-  </div>
-</div>
-<div class='container'>
-  <div class='row'>  
-    <% if @user.email == 'guest@example.com' %>
-      <div>コメントするには新規登録してください。</div>
-    <% else %>
-      <div><%=link_to 'コメント', new_public_post_comment_path(@post) %></div>
-    <% end %>
-    <% if @post.user == current_user %>
-      <%= link_to '編集', edit_public_post_path(@post), method: :get %>
-      <%= link_to '削除', public_post_path(@post), method: :delete %>
-    <% end %>
+        </div>
+        <div class='col-md-8'>
+          <p class='card-text'><%= @post.post_body %></p>
+        </div>
+    </div>
+    <div class='row justify-content-end'>
+      <% if @user.email == 'guest@example.com' %>
+        <div>コメントするには新規登録してください。</div>
+      <% else %>
+        <div class='col-3'><%=link_to 'コメント', new_public_post_comment_path(@post), class: 'btn btn-primary' %></div>
+      <% end %>
+      <% if @post.user == current_user %>
+        <%= link_to '編集', edit_public_post_path(@post), method: :get %>
+        <%= link_to '削除', public_post_path(@post), method: :delete %>
+      <% end %>
+    </div>
   </div>
 </div>
 <div class='container'>
@@ -58,33 +59,26 @@
 </div>
 <div class='container'>
   <div class='row'>
-        <p class='col-md-4'><% if comment.image.present? %>
-              <%= image_tag comment.image, class:'img-fluid' %>
-            <% else %>
-              <%= image_tag 'no_image.jpg', class:'img-fluid' %>
-            <% end %>
-        </p>
-        <p class='col-md-8'><%= comment.comment_body %></p>
+    <p class='col-md-4'>
+      <% if comment.image.present? %>
+        <%= link_to comment.image, "data-lightbox": comment.image do %>
+        　<%= image_tag comment.image, class:'img-fluid' %>
+        <% end %>
+      <% else %>
+        <%= image_tag 'no_image.jpg', class:'img-fluid' %>
+      <% end %>
+    </p>
+    <p class='col-md-8'><%= comment.comment_body %></p>
   </div>
 </div>
 <div class='container'>
   <div class='row'>
-            <% if comment.favorited_by?(current_user) %>
-                <%= link_to public_post_comment_favorite_path(@post, comment), method: :delete do %>
-                  <span style='color:red;'>♥<%= comment.favorites.count %></span>
-                <% end %>
-            <% else %>
-              <% if @user.email == 'guest@example.com' %>
-                <span>♡<%= comment.favorites.count %>︎</span>
-              <% else %>
-                <%= link_to public_post_comment_favorites_path(@post, comment), method: :post do %>
-                  <span>♡<%= comment.favorites.count %>︎</span>
-                <% end %>
-              <% end %>
-            <% end %>
-            <% if comment.user == current_user %>
-              <p><%= link_to '編集', edit_public_post_comment_path(@post, comment) %></p>
-            <% end %>
+      <div id="favorite_buttons_<%= comment.id %>">
+　　　  <%= render "public/favorites/favorite_btn", post: @post, comment: comment %>
+　　  </div>
+      <% if comment.user == current_user %>
+        <p><%= link_to '編集', edit_public_post_comment_path(@post, comment) %></p>
+      <% end %>
     <% end %>
   </div>   
 </div>
