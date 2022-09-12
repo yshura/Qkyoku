@@ -22,9 +22,9 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = @post.comments
     # 既読未読機能
-    # if Check.create(post_id: @post.id, user_id: current_user.id) 
-    #   @check = Check.update(complete: true)
-    # end
+    if Check.create(post_id: @post.id, user_id: current_user.id) 
+       Check.update(complete: true)
+    end
   end
   
   def edit

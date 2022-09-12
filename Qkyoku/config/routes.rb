@@ -29,15 +29,15 @@ Rails.application.routes.draw do
         resources :favorites, only: [:create, :destroy]
       end
     end
-    
   end
   
   namespace :admin do
     get 'homes/top' => 'homes#top'
-    resources :posts, only: [:index]
-    resources :comments, only: [:index]
+    resources :posts, only: [:index, :show, :destroy]
     resources :sections, only:[:index, :edit, :create, :update]
     resources :execution_statuses, only:[:index, :edit, :create, :update]
-    resources :users, only:[:index, :show, :edit, :update]
+    resources :users, only:[:index, :show, :edit, :update] do
+      resources :comments, only: [:index,:destroy]
+    end
   end
 end

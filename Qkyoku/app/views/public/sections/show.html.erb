@@ -1,39 +1,24 @@
 <div class='container'>
   <div class='row'>
-    <table class='table col-md-2' border='2' style='font-size: 13pt;'>
-      <tbody>
+    <ul class='col-md-2 mt-5' style='font-size: 13pt; list-style: none;'>
         <% @sections.each do |section| %>
-          <tr>
-            <th>
+          <li>
               <%= link_to public_section_path(section) do %>
                 <%= section.name %>
               <% end %>
-            </th>
-          </tr>
+          </li>
         <% end %>
-      </tbody>
-    </table>
+    </ul>
+    <div class='col-md-8 offset-md-1 mt-5'>
+      <h2>"<%= @section.name %>"工程</h2>
+        <% @section.posts.each do |post| %>
+          <p><%= post.user.name %></p>
+          <p><%= link_to public_post_path(post) do %>
+                <%= post.title %>
+              <% end %>
+          </p>
+          <p><%= post.created_at.strftime('%Y/%m/%d') %></p>
+        <% end %>
+    </div>
   </div>
 </div>
-<div class='container'>
-  <div class='row'>
-    <div>
-      <h2>投稿詳細</h2>
-    </div>
-      <table class='table col-md-4'>
-        <tbody>
-          <tr>
-            <% @section.posts.each do |post| %>
-              <td>
-                  <%= post.user.name %>
-                  <%= link_to public_post_path(post) do %>
-                    <%= post.title %>
-                  <% end %>
-                  <%= post.created_at.strftime('%Y/%m/%d') %>
-              </td>
-            <% end %>
-          </tr>
-        </tbody>
-      </table>
-    </div>
- </div>

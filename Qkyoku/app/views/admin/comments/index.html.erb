@@ -1,0 +1,24 @@
+<div class='container'>    
+  <div class='col-md-4 mt-4 mb-3'>
+    <h2>過去のコメント</h2>
+  </div>
+  <table class= "table table-hover table-inveerse">
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.execution_status.name %></td>
+        <td><%= comment.user.name %></td>
+        <td><%= comment.comment_body %></td>
+        <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+        <td><% if comment.image.present? %>
+              <%= image_tag comment.image, size:'150x200' %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', size:'150x200' %>
+            <% end %>
+        </td>
+        <td>♡<%= comment.favorites.count %>︎</td>
+        <td><%= link_to '削除', admin_user_comment_path(@user,comment), method: :delete %></td>
+      </tr>
+    <% end %>  
+  </table>
+  <%#= paginate @comments %>
+</div>

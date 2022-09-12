@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2022_09_08_124101) do
   create_table "checks", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "post_id", null: false
+    t.boolean "complete", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

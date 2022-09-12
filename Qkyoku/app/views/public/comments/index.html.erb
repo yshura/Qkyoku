@@ -7,9 +7,14 @@
       <tr>
         <td><%= comment.execution_status.name %></td>
         <td><%= comment.user.name %></td>
+        <td><% if comment.image.present? %>
+              <%= image_tag comment.image, size:'150x200' %>
+            <% else %>
+              <%= image_tag 'no_image.jpg' %>
+            <% end %>
+        </td>
         <td><%= comment.comment_body %></td>
         <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-        <td><%#= image_tag comment.image, size:'150x200' %></td>
       </tr>
     <% end %>  
   </table>

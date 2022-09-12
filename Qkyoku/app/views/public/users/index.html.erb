@@ -1,17 +1,14 @@
 <div class='container'>
   <div class='row'>
-    <table class='table col-md-2' border='2' style='font-size: 13pt;'>
-      <tbody>
+    <ul class='table col-md-2 mt-5' style='font-size: 13pt; list-style: none;'>
         <% @sections.each do |section| %>
-          <tr>
-            <th>
+          <li>
               <%= link_to public_section_path(section) do %>
                 <%= section.name %>
               <% end %>
-            </th>
-          </tr>
+          </li>
         <% end %>
-      </tbody>
-    </table>
+    </ul>
+    <div class='col-md-8 offset-md-1 mt-5'><%= image_tag 'kouteizu.jpg', class:"img-fluid" %></div>
   </div>
 </div>
