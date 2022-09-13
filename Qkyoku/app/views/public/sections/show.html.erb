@@ -1,24 +1,54 @@
 <div class='container'>
   <div class='row'>
-    <ul class='col-md-2 mt-5' style='font-size: 13pt; list-style: none;'>
+    <div class='col-md-2 mt-5 card' style='font-size: 13pt; list-style: none;'>
+      <ul class='list-group list-group-flush'>
         <% @sections.each do |section| %>
-          <li>
+          <li class='list-group-item'>
               <%= link_to public_section_path(section) do %>
                 <%= section.name %>
               <% end %>
           </li>
         <% end %>
-    </ul>
+      </ul>
+    </div>
     <div class='col-md-8 offset-md-1 mt-5'>
       <h2>"<%= @section.name %>"工程</h2>
-        <% @section.posts.each do |post| %>
-          <p><%= post.user.name %></p>
-          <p><%= link_to public_post_path(post) do %>
-                <%= post.title %>
-              <% end %>
-          </p>
-          <p><%= post.created_at.strftime('%Y/%m/%d') %></p>
-        <% end %>
+        <table class='table' border='2' style='font-size: 13pt; line-height: 50%;'>
+          <thead bgcolor="#f5f5f5">
+           <tr>
+             <th>投稿日</th>
+             <th>投稿者</th>
+             <th>工程</th>
+             <th>タイトル</th>
+             <th>コメント数</th>
+             <th>既読</th>
+           </tr>
+          </thead>
+          <tbody>
+            <% @section.posts.each do |post| %>
+              <tr>
+                <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+                <td><%= link_to public_user_path(post.user) do %>
+                      <%= post.user.name %>
+                    <% end %>
+                </td>
+                <td><%= post.section.name %></td>
+                <td><%= link_to public_post_path(post) do %>
+                      <%= post.title %>
+                    <% end %>
+                </td>
+                <td><%= post.comments.count %>件</td>
+                <!--既読、既読機能-->
+                <td><% if post.user == current_user %>
+                      --
+                    <% else %>
+                      <%= Check.find_by(user_id: current_user.id, post_id: post.id) ? '既読' : '未読' %>
+                    <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
     </div>
   </div>
 </div>
