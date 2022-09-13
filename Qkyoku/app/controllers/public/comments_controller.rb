@@ -1,4 +1,7 @@
 class Public::CommentsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :monitoring, only: [:edit, :update, :destroy]
+  before_action :prevent_url, only: [:edit, :update, :destroy]
   def index
     @user = User.find(params[:user_id])
     @comments = @user.comments
@@ -53,5 +56,15 @@ class Public::CommentsController < ApplicationController
   private
   def comment_params
     params.require(:comment).permit(:execution_status_id, :image, :comment_body)
+  end
+  
+  def monitoring
+     @comment = Comment.find(params[:id])
+  end
+
+  def prevent_url
+    if @comment.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 end

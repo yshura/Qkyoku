@@ -1,29 +1,42 @@
-<div class='container'>    
+<div class='container'>   
+  <div class='row'>
     <div class='col-md-4 mt-4 mb-3'>
       <h2>いいね一覧</h2>
     </div>
-    <table class='table table-hover table-inveerse'>
-      <thead>
-        <tr>
-          <th>投稿者</th>
-          <th>投稿日</th>
-          <th>コメント内容</th>
-          <th>ステータス</th>
-        </tr>
-        <tbody>
-          <% @favorites.each do |favorite| %>
-          <tr>
-            <td><%= favorite.comment.user.name %></td>
-            <td>
-              <%#= link_to public_post_path(@post) do %>
-              <%= favorite.comment.created_at.strftime('%Y/%m/%d') %>
-              <%# end %>
-            </td>
-            <td><%= favorite.comment.comment_body %></td>
-            <td><%= favorite.comment.execution_status.name %></td>
-          </tr>
+  </div>
+</div>
+<div class='container card'>
+  <div class='card-body'>
+    <% @favorites.each do |favorite| %>
+      <div class='row'>
+        <p class='col-md-2'><%= favorite.comment.user.name %></p>
+        <p class='col-md-4'><%= favorite.comment.execution_status.name %>
+        <p class='col-md-6'><%= favorite.comment.created_at.strftime('%Y/%m/%d') %></p>
+      </div>
+      <div class='row'>
+        <div class='col-md-4'>
+          <% if favorite.comment.image.present? %>
+            <%= link_to favorite.comment.image, 'data-lightbox': favorite.comment.image do %>
+            　<%= image_tag favorite.comment.image, class:'img-fluid' %>
+            <% end %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', class:'img-fluid' %>
           <% end %>
-        </tbody>
-      </thead>
-    </table>
+        </div>
+        <div class='col-md-7'>
+          <p class='card-text'>
+            <%= link_to public_post_path(favorite.comment.post.id) do %>
+              <%= favorite.comment.comment_body %>
+            <% end %>
+          </P>
+        </div>
+        <% if favorite.comment.user == current_user %>
+          <div class='col-1'><%= link_to '編集', edit_public_post_comment_path(favorite.comment.post.id, favorite.comment), class: 'btn btn-outline-success' %></div>
+        <% end %>
+      </div>
+      <div id="favorite_buttons_<%= favorite.comment.id %>">
+      　<div style="font-size: 25px"><%= render "public/favorites/favorite_btn", post: favorite.comment.post.id, comment: favorite.comment %></div>
+      </div>
+    <% end %>
+  </div>
 </div>

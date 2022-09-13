@@ -1,22 +1,15 @@
-<div class='container'>    
-  <div class='col-md-4 mt-4 mb-3'>
-    <h2>過去のコメント</h2>
+<div class='container'>
+  <div class='row'>    
+    <div class='col-md-4 mt-4 mb-3'>
+      <h2>過去のコメント</h2>
+    </div>
   </div>
-  <table class= 'table table-hover table-inveerse'>
-    <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.execution_status.name %></td>
-        <td><%= comment.user.name %></td>
-        <td><% if comment.image.present? %>
-              <%= image_tag comment.image, size:'150x200' %>
-            <% else %>
-              <%= image_tag 'no_image.jpg' %>
-            <% end %>
-        </td>
-        <td><%= comment.comment_body %></td>
-        <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-      </tr>
-    <% end %>  
-  </table>
-  <%#= paginate @comments %>
 </div>
+<div class='container card'>
+  <div class='card-body'>
+    <% @comments.each do |comment| %>
+      <p><%= render 'public/posts/comment.show', comment: comment, post: comment.post.id %></p>
+    <% end %>
+  </div>
+</div>
+  <%#= paginate @comments %>

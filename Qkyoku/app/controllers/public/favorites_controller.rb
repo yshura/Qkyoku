@@ -1,8 +1,10 @@
 class Public::FavoritesController < ApplicationController
+  
   def index
-    #@favorites = Favorite.where(user_id: current_user.id)
     @user = User.find(params[:user_id])
     @favorites = @user.favorites
+    #binding.pry
+    # @post = Post.find(params[:post_id])
   end
   
   def create
@@ -18,6 +20,5 @@ class Public::FavoritesController < ApplicationController
     @post = @comment.post
     favorite = current_user.favorites.find_by(comment_id: @comment.id)
     favorite.destroy
-  
   end
 end

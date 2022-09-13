@@ -1,4 +1,7 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :monitoring, only: [:edit, :update, :destroy]
+  before_action :prevent_url, only: [:edit, :update, :destroy]
   def index
     @posts = Post.all
   end
@@ -60,5 +63,15 @@ class Public::PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :post_body, :image, :section_id)
+  end
+  
+  def monitoring
+     @post = Post.find(params[:id])
+  end
+
+  def prevent_url
+    if @post.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 end

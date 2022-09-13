@@ -4,13 +4,15 @@
       <ul class='list-group list-group-flush'>
         <% @sections.each do |section| %>
           <li class='list-group-item'>
-              <%= link_to public_section_path(section) do %>
-                <%= section.name %>
-              <% end %>
+            <%= link_to public_section_path(section) do %>
+              <%= section.name %>
+            <% end %>
           </li>
         <% end %>
       </ul>
     </div>
-    <div class='col-md-8 offset-md-1 mt-5'><%= image_tag 'kouteizu.jpg', class:"img-fluid" %></div>
+    <div class='col-md-8 offset-md-1 mt-5'>
+      <%= image_tag 'kouteizu.jpg', class:"img-fluid" %>
+    </div>
   </div>
 </div>

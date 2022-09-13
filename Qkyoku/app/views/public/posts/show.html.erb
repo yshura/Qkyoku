@@ -29,15 +29,14 @@
           <p class='card-text'><%= @post.post_body %></p>
         </div>
         <% if @post.user == current_user %>
-          <div class='col-1'><%= link_to '編集', edit_public_post_path(@post), method: :get, class: 'btn btn-outline-success' %>
-            <div class='mt-1'><%= link_to '削除', public_post_path(@post), method: :delete, class: 'btn btn-outline-danger' %>
-            </div>      
+          <div class='col-1'>
+            <%= link_to '編集', edit_public_post_path(@post), method: :get, class: 'btn btn-outline-success' %>
           </div>
       <% end %>
     </div>
     <div class='row mt-2'>
       <% if @user.email == 'guest@example.com' %>
-        <div>コメントするには新規登録してください。</div>
+        <div class='btn btn-outline-primary'>コメントするには新規登録してください。</div>
       <% else %>
         <div class='col-2'><%=link_to 'コメント', new_public_post_comment_path(@post), class: 'btn btn-outline-primary' %></div>
       <% end %>
@@ -54,31 +53,7 @@
 <div class='container card'>
   <div class='card-body'>
     <% @comments.each do |comment| %>
-      <div class='row'>
-          <p class='col-md-2'><%= comment.user.name %></p>
-          <p class='col-md-4'>ステータス：<%= comment.execution_status.name %></p>
-          <p class='col-md-6'>投稿日：<%= comment.created_at.strftime('%Y/%m/%d') %></p>
-      </div>
-      <div class='row'>
-        <div class='col-md-4'>
-          <% if comment.image.present? %>
-            <%= link_to comment.image, "data-lightbox": comment.image do %>
-            　<%= image_tag comment.image, class:'img-fluid' %>
-            <% end %>
-          <% else %>
-            <%= image_tag 'no_image.jpg', class:'img-fluid' %>
-          <% end %>
-        </div>
-        <div class='col-md-7'>
-          <p class='card-text'><%= comment.comment_body %></p>
-        </div>
-        <% if comment.user == current_user %>
-          <div class='col-1'><%= link_to '編集', edit_public_post_comment_path(@post, comment), class: 'btn btn-outline-success' %></div>
-        <% end %>
-      </div>
-      <div id="favorite_buttons_<%= comment.id %>">
-  　   　<div style="font-size: 25px"><%= render "public/favorites/favorite_btn", post: @post, comment: comment %></div>
-  　　  </div>
+      <p><%= render 'comment.show', comment: comment, post: @post %></p>
     <% end %>
   </div>
 </div>
