@@ -15,13 +15,15 @@
   </div>
   <div class='col-md-7'>
     <p class='card-text'>
-      <%= link_to public_post_path(post) do %>
+      <%= link_to public_post_path(post), class: 'nav-link text-dark' do %>
         <%= comment.comment_body %>
       <% end %>
     </p>
   </div>
   <% if comment.user == current_user %>
-    <div class='col-1'><%= link_to '編集', edit_public_post_comment_path(post, comment), class: 'btn btn-outline-success' %></div>
+    <div class='col-1'>
+      <%= link_to '編集', edit_public_post_comment_path(post, comment), class: 'btn btn-outline-success' %>
+    </div>
   <% end %>
 </div>
 <div id="favorite_buttons_<%= comment.id %>">

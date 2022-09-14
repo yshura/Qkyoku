@@ -7,40 +7,7 @@
 </div>
 <div class='container card'>
   <div class='card-body'>
-    <div class='row'>
-      <p class='col-md-2'><%= @post.user.name %></p>
-      <p class='col-md-4'>工程：<%= @post.section.name %><p>
-      <p class='col-md-6'>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-    </div>
-    <div class='row no-gutters'>
-        <div class='col'><h3 class='card-title'><%= @post.title %></h3></div>
-    </div>
-    <div class='row'>
-        <div class='col-md-4'>
-          <% if @post.image.present? %>
-            <%= link_to @post.image, "data-lightbox": @post.image do %>  
-              <%= image_tag @post.image, class:'img-fluid' %>
-            <% end %>
-          <% else %>
-              <%= image_tag 'no_image.jpg', class:'img-fluid' %>
-          <% end %>
-        </div>
-        <div class='col-md-7'>
-          <p class='card-text'><%= @post.post_body %></p>
-        </div>
-        <% if @post.user == current_user %>
-          <div class='col-1'>
-            <%= link_to '編集', edit_public_post_path(@post), method: :get, class: 'btn btn-outline-success' %>
-          </div>
-      <% end %>
-    </div>
-    <div class='row mt-2'>
-      <% if @user.email == 'guest@example.com' %>
-        <div class='btn btn-outline-primary'>コメントするには新規登録してください。</div>
-      <% else %>
-        <div class='col-2'><%=link_to 'コメント', new_public_post_comment_path(@post), class: 'btn btn-outline-primary' %></div>
-      <% end %>
-    </div>
+    <%= render 'show', post: @post %>
   </div>
 </div>
 <div class='container'>

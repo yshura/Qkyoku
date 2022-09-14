@@ -1,22 +1,38 @@
-<div class='col-md-4 mt-4 mb-3'  style='display:flex; flex-wrap:wrap;'>
-  <h2>ステータス一覧・追加</h2>
-</div>
-<p><%= render 'create', execution_status: @execution_status %></p>
-    <div class='row'>
-      <div class="col-lg-5">
-         <table class="table" style="font-size: 13pt; line-height: 100%;">
-           <thead>
-            <tr align="center">
-             <th bgcolor="#f5f5f5">ステータス</th>
-             <th bgcolor="#f5f5f5"></th>
-            </tr>
-          </thead>
-　        <tbody>
-            <!--ステータス名表示-->
-            <% @execution_statuses.each do |execution_status| %>
-              <tr><th><%= execution_status.name %></th><td><%= link_to "編集", edit_admin_execution_status_path(execution_status.id), class: "btn btn-success btn-sm" %></td></tr>
-　          <% end %>
-          </tbody>
-         </table>
-      </div>
+<div class='container'>
+  <div class='row'>    
+    <div class='col-md-4 mt-4 mb-3'>
+      <h2>ステータス一覧・追加</h2>
     </div>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3 card mt-3'>
+      <p>
+        <%= render 'create', execution_status: @execution_status %>
+      </p>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <table class='table table-hover table-inveerse'>
+        <thead>
+          <th>ステータス</th>
+          <th></th>
+        </thead>
+　      <tbody>
+          <!--ステータス名表示-->
+          <% @execution_statuses.each do |execution_status| %>
+            <tr>
+              <td>
+                <%= execution_status.name %>
+              </td>
+              <td>
+                <%= link_to '編集', edit_admin_execution_status_path(execution_status.id), class: 'btn btn-success btn-sm' %>
+              </td>
+            </tr>
+　        <% end %>
+      </tbody>
+     </table>
+    </div>
+  </div>
+</div>
+        

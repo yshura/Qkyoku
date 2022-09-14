@@ -2,7 +2,7 @@
   <nav class='navbar navbar-expand-sm navbar-dark' style='background-color:#222222;'>
     <div class='container'>
       <a class='navbar-brand' href='/'>
-        <%#= image_tag'nagnocake.jpg', size:"100x100" %>
+        <%= image_tag'rogo.png', size:"100x100" %>
       </a>
         <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation'>
           <span class='navbar-toggler-icon'></span>
@@ -13,24 +13,24 @@
         　<!--ユーザーログイン後のヘッダー-->
           <% if user_signed_in? %>
             <li>
-              <%= link_to 'HOME', public_users_path, class: 'nav-link text-light' %>
+                <%= link_to 'HOME', public_users_path, class: 'nav-link text-light' %>
             </li>
             <li>
-              <%= link_to '投稿一覧', public_posts_path, class: 'nav-link text-light' %>
+                <%= link_to '投稿一覧', public_posts_path, class: 'nav-link text-light' %>
             </li>
             <li>
-              <%= link_to '新規投稿', new_public_post_path, class: 'nav-link text-light' %> 
+                <%= link_to '新規投稿', new_public_post_path, class: 'nav-link text-light' %> 
             </li>
             <li>
-              <%= link_to 'マイページ', public_user_path(current_user), class: 'nav-link text-light' %>
+                <%= link_to 'マイページ', public_user_path(current_user), class: 'nav-link text-light' %>
             </li>
             <li>
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
             </li>
-            <li>
+            <li class='nav-item active'>
               <%= form_with url: search_public_posts_path, local: true, method: :get do |f| %>
                 <%= f.text_field :keyword %>
-                <%= f.submit "検索" %>
+                <%= f.submit '検索' %>
               <% end %>
             </li>
           <!--管理者ログイン後のヘッダー-->

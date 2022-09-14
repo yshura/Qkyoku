@@ -1,24 +1,50 @@
-<div class='container'>    
-  <div class='col-md-4 mt-4 mb-3'>
-    <h2>過去のコメント</h2>
+<div class='container'>
+  <div class='row'>    
+    <div class='col-md-4 mt-4 mb-3'>
+      <h2>過去のコメント</h2>
+    </div>
   </div>
-  <table class= "table table-hover table-inveerse">
-    <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.execution_status.name %></td>
-        <td><%= comment.user.name %></td>
-        <td><%= comment.comment_body %></td>
-        <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-        <td><% if comment.image.present? %>
-              <%= image_tag comment.image, size:'150x200' %>
-            <% else %>
-              <%= image_tag 'no_image.jpg', size:'150x200' %>
-            <% end %>
-        </td>
-        <td>♡<%= comment.favorites.count %>︎</td>
-        <td><%= link_to '削除', admin_user_comment_path(@user,comment), method: :delete %></td>
-      </tr>
-    <% end %>  
-  </table>
-  <%#= paginate @comments %>
 </div>
+<div class='container card'>
+  <div class='card-body'>
+    <% @comments.each do |comment| %>
+      <div class='row'>
+        <p class='col-md-2'>
+          <%= link_to admin_user_path(comment.user) do %>
+            <%= comment.user.name %>
+          <% end %>
+        </p>
+        <p class='col-md-4'>
+          ステータス：<%= comment.execution_status.name %>
+        </p>
+        <p class='col-md-6'>
+          投稿日：<%= comment.created_at.strftime('%Y/%m/%d') %>
+        </p>
+      </div>
+      <div class='row'>
+        <div class='col-md-4'>
+          <% if comment.image.present? %>
+            <%= link_to comment.image, 'data-lightbox': comment.image do %>
+            　<%= image_tag comment.image, class:'img-fluid' %>
+            <% end %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', class:'img-fluid' %>
+          <% end %>
+        </div>
+        <div class='col-md-7'>
+          <p class='card-text'>
+            <%= link_to admin_post_path(comment.post.id), class: 'nav-link text-dark' do %>
+              <%= comment.comment_body %>
+            <% end %>
+          </p>
+        </div>
+        <div class='col-1'>
+          <%= link_to '削除', admin_user_comment_path(@user,comment), method: :delete %>
+        </div>
+      </div>
+      <span>♡<%= comment.favorites.count %>︎</span>
+    <% end %>
+  </div>
+</div>
+
+<%#= paginate @comments %>

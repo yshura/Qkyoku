@@ -1,44 +1,58 @@
-<div class='container'>    
+<div class='container'>
+  <div class='row'>    
     <div class='col-md-4 mt-4 mb-3'>
       <h2>投稿詳細</h2>
     </div>
-      <td><%= link_to admin_user_path(@post.user) do %>
-            <%= @post.user.name %>
-          <% end %>
-      </td>
-      <td><%= @post.section.name %><td>
-      <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
-      <p><%= @post.title %></p>
-      <p><% if @post.image.present? %>
-           <%= image_tag @post.image, size:'150x200' %>
-         <% else %>
-           <%= image_tag 'no_image.jpg', size:'150x200' %>
-         <% end %></p>
-      <p><%= @post.post_body %></p>
-
-      <%= link_to '削除', admin_post_path(@post), method: :delete %>
-      
-    <%#= @check ? '既読' : '未読' %>
-    
-    <div class='col-md-4 mt-4 mb-3'>
-      <h2>コメント</h2>
-    </div>
-      <% @comments.each do |comment| %>
-        <tr>
-          <td><%= link_to admin_user_path(comment.user) do %>
-                <%= comment.user.name %>
-              <% end %>  
-          </td>
-          <td><%= comment.execution_status.name %></td>
-          <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-          <td><% if comment.image.present? %>
-                <%= image_tag comment.image, size:'150x200' %>
-              <% else %>
-                <%= image_tag 'no_image.jpg', size:'150x200' %>
-              <% end %>
-          </td>
-          <td><%= comment.comment_body %></td>
-              <span>♡<%= comment.favorites.count %>︎</span>
-        </tr>
-      <% end %>
   </div>
+</div>
+<div class='container card'>
+  <div class='card-body'>
+    <div class='row'>
+      <p class='col-md-2'>
+        <%= link_to admin_user_path(@post.user) do %>
+          <%= @post.user.name %>
+        <% end %>
+      </p>
+      <p class='col-md-4'>
+        <%= @post.section.name %>
+      <p>
+      <p class='col-md-6'>
+        <%= @post.created_at.strftime('%Y/%m/%d') %>
+      </p>
+    </div>
+    <div class='row no-gutters'>
+      <div class='col'><h3 class='card-title'><%= @post.title %></h3></div>
+    </div>
+    <div class='row'>
+      <div class='col-md-4'>
+        <% if @post.image.present? %>
+          <%= link_to @post.image, 'data-lightbox': @post.image do %>  
+            <%= image_tag @post.image, class:'img-fluid' %>
+          <% end %>
+        <% else %>
+            <%= image_tag 'no_image.jpg', class:'img-fluid' %>
+        <% end %>
+      </div>
+      <div class='col-md-7'>
+        <p class='card-text'><%= @post.post_body %></p>
+      </div>
+      <div class='col-1'>
+        <%= link_to '削除', admin_post_path(@post), method: :delete, class: 'btn btn-outline-danger' %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>   
+    <div class='col-md-4 mt-4 mb-3'>
+      <h3>コメント</h3>
+    </div>
+  </div>
+</div>
+<div class='container card'>
+  <div class='card-body'>
+    <% @comments.each do |comment| %>
+      <p><%= render 'comment.show', comment: comment, post: @post %></p>
+    <% end %>
+  </div>
+</div>
