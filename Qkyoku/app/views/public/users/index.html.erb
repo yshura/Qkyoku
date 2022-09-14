@@ -1,16 +1,6 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-2 mt-5 card' style='font-size: 13pt; list-style: none;'>
-      <ul class='list-group list-group-flush'>
-        <% @sections.each do |section| %>
-          <li class='list-group-item'>
-            <%= link_to public_section_path(section) do %>
-              <%= section.name %>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+    <%= render 'public/sections/index' %>
     <div class='col-md-8 offset-md-1 mt-5'>
       <%= image_tag 'kouteizu.jpg', class:"img-fluid" %>
     </div>

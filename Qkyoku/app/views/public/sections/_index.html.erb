@@ -1,0 +1,16 @@
+<div class='col-md-2 mt-5' style='font-size: 13pt; list-style: none;'>
+  <div class='card'>
+    <ul class='list-group list-group-flush'>
+      <% @sections.each do |section| %>
+        <li class='list-group-item'>
+          <%= link_to public_section_path(section) do %>
+            <%= section.name %>
+          <% end %>
+          <span class="badge badge-pill badge-danger">
+            <%= section.count_unread_by_user(current_user) %>
+          </span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

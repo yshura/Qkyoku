@@ -8,9 +8,10 @@
           <span class='navbar-toggler-icon'></span>
         </button>
     </div>
+    <div class='container'>
       <div class='collapse navbar-collapse' id='navbarNavDropdown'>
         <ul class='navbar-nav ml-auto'>
-        　<!--ユーザーログイン後のヘッダー-->
+          <!--ユーザーログイン後のヘッダー-->
           <% if user_signed_in? %>
             <li>
                 <%= link_to 'HOME', public_users_path, class: 'nav-link text-light' %>
@@ -50,11 +51,11 @@
             <li>
               <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
             </li>
-        　<!--ログイン前のヘッダー-->
+          <!--ログイン前のヘッダー-->
           <% else %>
-          　<li>
-          　 <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'login nav-link text-light' %>
-          　</li>
+            <li>
+             <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'login nav-link text-light' %>
+            </li>
             <li>
               <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-light' %>
             </li>
@@ -64,5 +65,6 @@
           <% end %>
         </ul>
       </div>
+    </div>
   </nav>
 </header>
