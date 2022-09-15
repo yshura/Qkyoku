@@ -1,5 +1,9 @@
 <div class='row'>
-  <p class='col-md-2'><%= post.user.name %></p>
+  <p class='col-md-2'>
+    <%= link_to public_user_path(post.user), class: 'text-dark' do %>
+      <%= post.user.name %>
+    <% end %>
+  </p>
   <p class='col-md-4'>工程：<%= post.section.name %><p>
   <p class='col-md-6'>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
 </div>

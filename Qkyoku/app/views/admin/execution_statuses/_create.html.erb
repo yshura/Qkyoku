@@ -1,8 +1,8 @@
 <%= form_with model: execution_status, url: admin_execution_statuses_path, method: :post, local:true do |f| %>
-  <div class='field'>
-    <%= f.text_field :name, class: 'form-control name', placeholder: 'ステータスを追加', size: '40' %>
+  <div class='form-group'>
+    <%= f.text_field :name, class: 'form-control', placeholder: 'ステータスを追加' %>
 　</div>
-　<div class='form-group mx-auto mt-1'>
+　<div class='form-group'>
     <%= f.submit '追加', class: 'btn btn-outline-success' %>
   </div>
 <% end %>

@@ -16,7 +16,7 @@ class Admin::ExecutionStatusesController < ApplicationController
     
     def update
         @execution_status = ExecutionStatus.find(params[:id])
-        @execution_status.update
+        @execution_status.update(execution_status_params)
         redirect_to admin_execution_statuses_path
     end
     
