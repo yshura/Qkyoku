@@ -1,10 +1,10 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(10)
   end
   
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]).page(params[:page]).per(2)
   end
   
   def edit

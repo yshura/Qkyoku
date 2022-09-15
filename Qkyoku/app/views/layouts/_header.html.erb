@@ -1,7 +1,7 @@
 <header class='shadow-sm'>
   <nav class='navbar navbar-expand-sm navbar-dark' style='background-color:#222222;'>
     <div class='container'>
-      <a class='navbar-brand' href='/'>
+      <a class='navbar-brand'>
         <%= image_tag'rogo.png', size:'70x70' %>
       </a>
         <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation'>
@@ -14,24 +14,30 @@
           <!--ユーザーログイン後のヘッダー-->
           <% if user_signed_in? %>
             <li>
-                <%= link_to 'HOME', public_users_path, class: 'nav-link text-light' %>
+              <%= link_to 'HOME', public_users_path, class: 'nav-link text-light' %>
             </li>
             <li>
-                <%= link_to '投稿一覧', public_posts_path, class: 'nav-link text-light' %>
+              <%= link_to '投稿一覧', public_posts_path, class: 'nav-link text-light' %>
             </li>
             <li>
-                <%= link_to '新規投稿', new_public_post_path, class: 'nav-link text-light' %> 
+              <%= link_to new_public_post_path, class: 'nav-link text-light' do %>
+                投稿<i class="far fa-edit"></i>
+              <%end %>
             </li>
             <li>
-                <%= link_to 'マイページ', public_user_path(current_user), class: 'nav-link text-light' %>
+              <%= link_to 'マイページ', public_user_path(current_user), class: 'nav-link text-light' %>
             </li>
             <li>
-                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
             </li>
-            <li class='nav-item active'>
+            <li class='mt-1'>
               <%= form_with url: search_public_posts_path, local: true, method: :get do |f| %>
-                <%= f.text_field :keyword %>
-                <%= f.submit '検索' %>
+                <%= f.text_field :keyword, placeholder: 'キーワードを入力' %>
+                <%#= f.submit '検索' %>
+                <%= f.button :type => "submit", style: "border-style:none;" do %>
+                               検索   <i class="fas fa-search color: white;"></i>
+
+                <% end %>
               <% end %>
             </li>
           <!--管理者ログイン後のヘッダー-->

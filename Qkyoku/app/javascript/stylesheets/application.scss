@@ -1,2 +1,17 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.footer {
+  background-color:#AAAAAA; 
+  margin-top: auto !important;
+}
+
+h3 {
+  color :red;
+}
+
+.top {
+  border :solid;
+  background :white;
+  padding-bottom :48px;
+}

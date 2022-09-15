@@ -23,12 +23,23 @@
           <% end %>
         </h5>
       </div>
-      <div><%= link_to '編集', edit_admin_user_path(@user), class: "btn btn-success btn-block edit_#{@user.id}" %></div>
-      <div class='mt-2 mb-2'><%= link_to '過去のコメント', admin_user_comments_path(@user), class: 'btn btn-primary btn-block' %></div>
+      <div>
+        <%= link_to edit_admin_user_path(@user), class: "btn btn-secondary btn-block edit_#{@user.id}" do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
+      </div>
+      <div class='mt-2 mb-2'>
+        <%= link_to admin_user_comments_path(@user), class: 'btn btn-primary btn-block' do %>
+          <i class="fas fa-comment-dots"></i>
+        <% end %>
+      </div>
     </div>
     <div class='col-md-8 offset-md-1'>
       <h2 class='mt-5'>投稿</h2>
       <%= render 'admin/posts/index', posts: @user.posts %>
+    </div>
+    <div style="margin:0 auto;">
+      <%= paginate @user.posts %>
     </div>
   </div>
 </div>

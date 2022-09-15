@@ -3,7 +3,7 @@ class Public::PostsController < ApplicationController
   before_action :monitoring, only: [:edit, :update, :destroy]
   before_action :prevent_url, only: [:edit, :update, :destroy]
   def index
-    @posts = Post.all
+    @posts = Post.all.page(params[:page]).per(10)
   end
   
   def new
@@ -14,7 +14,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-    redirect_to public_posts_path(@post)
+    redirect_to public_posts_path(@post), notice: '投稿完了しました'
     else
     render 'new'
     end
@@ -38,7 +38,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to public_post_path(@post)
+      redirect_to public_post_path(@post), notice: '投稿内容を更新しました'
     else
       @status = ExecutionStatus.all
       render :edit
@@ -48,7 +48,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to public_posts_path(@post)
+    redirect_to public_posts_path(@post), notice: '投稿を削除しました'
   end
   
   def search

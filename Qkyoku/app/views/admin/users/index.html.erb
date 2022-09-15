@@ -1,4 +1,5 @@
-<div class='container'>    
+<div class='container'> 
+  <div class='row'>
     <div class='col-md-4 mt-4 mb-3'>
       <h2>ユーザー一覧</h2>
     </div>
@@ -20,16 +21,19 @@
               <% end %>
             </td>
             <td><%= user.email %></td>
-          <td><% if user.is_deleted == true %>
-          <span class="text-secondary"><strong>退会</strong></span>
-          <% else %>
-          <span class="text-success"><strong>有効</strong></span>
-          <% end %>
-          </td>
+            <td><% if user.is_deleted == true %>
+            <span class='text-secondary'><strong>退会</strong></span>
+            <% else %>
+            <span class='text-success'><strong>有効</strong></span>
+            <% end %>
+            </td>
           </tr>
-          
           <% end %>
-          </tbody>
+        </tbody>
       </thead>
     </table>
+    <div style="margin:0 auto;">
+      <%= paginate @users %>
+    </div>
+  </div>
 </div>

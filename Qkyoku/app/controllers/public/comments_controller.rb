@@ -19,10 +19,10 @@ class Public::CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to public_post_path(@post)
+      redirect_to public_post_path(@post), notice: '投稿完了しました'
     else
       @status = ExecutionStatus.all
-      render :new
+      render :new, notice:
     end
   end
   
@@ -39,7 +39,7 @@ class Public::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
-      redirect_to public_post_path(@post)
+      redirect_to public_post_path(@post), notice: 'コメントを更新しました'
     else
       @status = ExecutionStatus.all
       render :edit
@@ -50,7 +50,7 @@ class Public::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to public_post_path(@post)
+    redirect_to public_post_path(@post), notice: 'コメントを削除しました'
   end
   
   private

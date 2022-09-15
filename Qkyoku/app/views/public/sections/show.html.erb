@@ -28,7 +28,7 @@
                     <% end %>
                 </td>
                 <td><%= post.comments.count %>件</td>
-                <!--既読、既読機能-->
+                <!--既読、未読機能-->
                 <td><% if post.user == current_user %>
                       --
                     <% else %>
@@ -42,3 +42,4 @@
     </div>
   </div>
 </div>
+<%= render 'layouts/back' %>

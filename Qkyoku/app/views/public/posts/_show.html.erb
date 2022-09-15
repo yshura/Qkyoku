@@ -4,8 +4,18 @@
       <%= post.user.name %>
     <% end %>
   </p>
-  <p class='col-md-4'>工程：<%= post.section.name %><p>
-  <p class='col-md-6'>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+  <p class='col-md-4'>
+    <span class='badge badge-pill badge-secondary' style ='font-size: 12px'>
+      工程
+    </span>
+    <%= post.section.name %>
+  <p>
+  <p class='col-md-6'>
+    <span class='badge badge-pill badge-secondary' style ='font-size: 12px'>
+      投稿日
+    </span>
+    <%= post.created_at.strftime('%Y/%m/%d') %>
+  </p>
 </div>
 <div class='row no-gutters'>
   <div class='col'><h3 class='card-title'><%= post.title %></h3></div>
