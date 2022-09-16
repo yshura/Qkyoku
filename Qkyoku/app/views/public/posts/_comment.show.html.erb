@@ -21,10 +21,10 @@
   <div class='col-md-4'>
     <% if comment.image.present? %>
       <%= link_to comment.image, 'data-lightbox': comment.image do %>
-      　<%= image_tag comment.image, class:'img-fluid' %>
+        <%= image_tag comment.image, size: '100x100' %>
       <% end %>
     <% else %>
-      <%= image_tag 'no_image.jpg', class:'img-fluid' %>
+      <%= image_tag 'no_image.png', size: '100x100' %>
     <% end %>
   </div>
   <div class='col-md-7'>
