@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class='col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto mt-5'>      
-      <h2>管理者ログイン</h2>
+      <h2 class='register'>管理者ログイン</h2>
       <%= form_with model: @admin, url: admin_session_path do |f| %>
         <%= render 'devise/shared/error_messages', resource: resource %>
         <div class='field'>
@@ -13,7 +13,7 @@
           <% end %><br />
           <%= f.password_field :password, autocomplete: 'new-password', placeholder: 'パスワード', size: 40 %>
         </div>
-        <div class='actions'>
+        <div class='actions mt-3'>
           <%= f.submit 'ログイン', class: 'btn btn-info' %>
         </div>
       <% end %>

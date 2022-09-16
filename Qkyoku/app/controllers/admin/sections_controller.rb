@@ -1,24 +1,29 @@
 class Admin::SectionsController < ApplicationController
     def index
-        @sections = Section.all
-        @section = Section.new
+      @sections = Section.all
+      @section = Section.new
     end
     
     def create
-        @section = Section.new(section_params)
-        @section.save
-        redirect_to admin_sections_path
+      @section = Section.new(section_params)
+      @section.save
+      redirect_to admin_sections_path
     end
     
     def edit
-        @section = Section.find(params[:id])
+      @section = Section.find(params[:id])
     end
     
     def update
-        @section = Section.find(params[:id])
-        @section.update(section_params)
-        redirect_to admin_sections_path
-        
+      @section = Section.find(params[:id])
+      @section.update(section_params)
+      redirect_to admin_sections_path
+    end
+    
+    def destroy
+      @section = Section.find(params[:id])
+      @section.destroy
+      redirect_to admin_sections_path
     end
     
     private

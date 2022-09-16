@@ -7,33 +7,9 @@
 </div>
 <div class='container'>
   <div class='row'>
-    <div class='col-md-3 mt-3'>
-      <div class='card'>
-        <div class='mx-1 mt-4'>
-          <%= render 'create', execution_status: @execution_status %>
-        </div>
-      </div>
-    </div>
+    <%= render 'create', execution_status: @execution_status %>
     <div class='col-md-8 offset-md-1'>
-      <table class='table table-hover table-inveerse'>
-        <thead>
-          <th>ステータス</th>
-          <th></th>
-        </thead>
-　      <tbody>
-          <!--ステータス名表示-->
-          <% @execution_statuses.each do |execution_status| %>
-            <tr>
-              <td>
-                <%= execution_status.name %>
-              </td>
-              <td>
-                <%= link_to '編集', edit_admin_execution_status_path(execution_status.id), class: 'btn btn-success btn-sm' %>
-              </td>
-            </tr>
-　        <% end %>
-      </tbody>
-     </table>
+      <%= render 'index', execution_statuses: @execution_statuses %>
     </div>
   </div>
 </div>

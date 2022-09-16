@@ -1,6 +1,6 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_guest_user, only: [:new, :edit]
+  # before_action :ensure_guest_user, only: [:new, :edit]
 
   def index
     @user = User.find(params[:user_id])
@@ -55,10 +55,10 @@ class Public::CommentsController < ApplicationController
     params.require(:comment).permit(:execution_status_id, :image, :comment_body)
   end
   
-  def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.email == 'guest@example.com'
-      redirect_to user_path(current_user) , notice: 'ゲストユーザーはコメントできません。'
-    end
-  end  
+  # def ensure_guest_user
+  #   @user = User.find(params[:id])
+  #   if @user.email == 'guest@example.com'
+  #     redirect_to user_path(current_user) , notice: 'ゲストユーザーはコメントできません。'
+  #   end
+  # end  
 end

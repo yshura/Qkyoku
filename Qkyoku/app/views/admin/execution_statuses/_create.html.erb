@@ -1,8 +1,14 @@
-<%= form_with model: execution_status, url: admin_execution_statuses_path, method: :post, local:true do |f| %>
-  <div class='form-group'>
-    <%= f.text_field :name, class: 'form-control', placeholder: 'ステータスを追加' %>
-　</div>
-　<div class='form-group'>
-    <%= f.submit '追加', class: 'btn btn-outline-success' %>
+<div class='col-md-3 mt-3'>
+  <div class='card'>
+    <div class='mx-1 mt-4'>
+      <%= form_with model: execution_status, url: admin_execution_statuses_path, method: :post, local:true do |f| %>
+        <div class='form-group'>
+          <%= f.text_field :name, class: 'form-control', placeholder: 'ステータスを追加' %>
+      　</div>
+      　<div class='form-group'>
+          <%= f.submit '追加', class: 'btn btn-outline-success' %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>

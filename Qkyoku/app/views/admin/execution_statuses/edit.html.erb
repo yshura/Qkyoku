@@ -9,9 +9,10 @@
               <%= f.label 'ステータス名' %>
               <%= f.text_field :name, class: 'form-control', placeholder: 'ステータスを入力' %>
             </div>
-            <div class='form-group'>
               <%= f.submit '更新', class: 'btn btn-outline-success' %>
-            </div>
+              <p class='mt-2'>
+              <%= link_to '削除', admin_execution_status_path(@execution_status), method: :delete, class: 'btn btn-outline-danger' %>
+            </p>
           <% end %>
         </div>
       </div>

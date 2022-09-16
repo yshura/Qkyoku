@@ -7,30 +7,9 @@
 </div>
 <div class='container'>
   <div class='row'>
-    <div class='col-md-3 mt-3'>
-      <div class='card'>
-        <div class='mx-1 mt-4'>
-          <%= render 'create', section: @section %>
-        </div>
-      </div>
-    </div>
+    <%= render 'create', section: @section %>
     <div class='col-md-8 offset-md-1'>
-      <table class='table table-hover table-inveerse'>
-        <thead>
-          <th>工程</th>
-          <th></th>
-        </thead>
-　      <tbody>
-          <!--工程名表示-->
-          <% @sections.each do |section| %>
-            <tr>
-              <td>
-                <%= section.name %></th><td><%= link_to "編集", edit_admin_section_path(section.id), class: "btn btn-success btn-sm" %>
-              </td>
-            </tr>
-　        <% end %>
-        </tbody>
-      </table>
+      <%= render 'index', sections: @sections %>
     </div>
   </div>
 </div>
