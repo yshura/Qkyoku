@@ -1,9 +1,9 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-4 mt-4 mb-3 mx-auto'>
-      <h2>ステータス名編集</h2>
+    <div class='col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto mt-5'>
+      <h2 class='register'>ステータス名編集</h2>
       <div class='card'>
-        <div class='mx-1 mt-4'>
+        <div class='mx-4 mt-4'>
           <%= form_with model: @execution_status, url: admin_execution_status_path(@execution_status.id), method: :patch, local:true do |f| %>
             <div class='form-group'>
               <%= f.label 'ステータス名' %>

@@ -30,5 +30,5 @@ ER図 https://app.diagrams.net/#G1hjVt2NTsH7wQdCV_SJhNRyJI-_7puw89<br>
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 画像素材 https://pixabay.com/ja/images/search/%E3%83%9E%E3%83%84%E3%83%80/
 - 使用しない場合は、使用素材の項目をREADMEから削除してください。

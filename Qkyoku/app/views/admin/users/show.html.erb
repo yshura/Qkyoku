@@ -3,19 +3,19 @@
     <div class='col-md-3 card mt-5'>
       <div class='card-body'>
         <h5 class='mt-2'>
-          <span class='badge badge-pill badge-secondary' style ='font-size: 12px'>id</span><br>
+          <span class='badge badge-pill badge-secondary appearance'>id</span><br>
           <%= @user.id %>
         </h5>
         <h5 class='mt-3'>
-          <span class='badge badge-pill badge-secondary' style ='font-size: 12px'>name</span><br>
+          <span class='badge badge-pill badge-secondary appearance'>name</span><br>
           <%= @user.name %>
         </h5>
         <h5 class='mt-3'>
-          <span class='badge badge-pill badge-secondary' style ='font-size: 12px'>email</span><br>
+          <span class='badge badge-pill badge-secondary appearance'>email</span><br>
           <%= @user.email %>
         </h5>
         <h5 class='mt-3'>
-          <span class='badge badge-pill badge-secondary' style ='font-size: 12px'>status</span><br>
+          <span class='badge badge-pill badge-secondary appearance'>status</span><br>
           <% if @user.is_deleted == true %>
           <span class='text-secondary'><strong>退会</strong></span>
           <% else %>
@@ -39,7 +39,7 @@
       <%= render 'admin/posts/index', posts: @user.posts %>
     </div>
     <div style="margin:0 auto;">
-      <%= paginate @user.posts %>
+      <%= paginate @posts %>
     </div>
   </div>
 </div>

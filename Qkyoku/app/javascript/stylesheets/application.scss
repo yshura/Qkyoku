@@ -6,15 +6,42 @@
   margin-top: auto !important;
 }
 
+div {
+  font-family :serif;
+}
+
+h2 {
+  font-family :serif;
+}
+
+h3 {
+  font-family :serif;
+}
+
+h5{
+  font-family :serif;
+}
+
 .top-title {
-  color :red;
+  color :white;
 }
 
-.top {
-  border :solid;
-  background :white;
-  padding-bottom :48px;
+.top-body{
+  color :white;
 }
 
-.about {
+.register {
+  text-align :center;
+}
+
+.field {
+  text-align :center;
+}
+
+.actions {
+  text-align :center;
+}
+
+.appearance {
+  font-size :12px;
 }

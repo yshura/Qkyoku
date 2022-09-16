@@ -1,9 +1,9 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-4 mt-4 mb-3 mx-auto'>
-      <h2>工程名編集</h2>
+    <div class='col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto mt-5'>
+      <h2 class='register'>工程名編集</h2>
       <div class='card'>
-        <div class='mx-1 mt-4'>
+        <div class='mx-4 mt-4'>
           <%= form_with model: @section, url: admin_section_path(@section.id), method: :patch, local:true do |f| %>
             <div class='form-group'>
               <%= f.label '工程名' %>
