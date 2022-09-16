@@ -28,10 +28,10 @@
   <div class='col-md-4'>
     <% if post.image.present? %>
       <%= link_to post.image, 'data-lightbox': post.image do %>  
-        <%= image_tag post.image, class:'img-fluid' %>
+        <%= image_tag post.image, size: '300x200' %>
       <% end %>
     <% else %>
-        <%= image_tag 'no_image.jpg', class:'img-fluid' %>
+        <%= image_tag 'no_image.png', size: '300x200' %>
     <% end %>
   </div>
   <div class='col-md-7'>
