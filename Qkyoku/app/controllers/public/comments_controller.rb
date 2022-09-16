@@ -1,7 +1,7 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :monitoring, only: [:edit, :update, :destroy]
-  before_action :prevent_url, only: [:edit, :update, :destroy]
+  before_action :ensure_guest_user, only: [:new, :edit]
+
   def index
     @user = User.find(params[:user_id])
     @comments = @user.comments
@@ -24,9 +24,6 @@ class Public::CommentsController < ApplicationController
       @status = ExecutionStatus.all
       render :new, notice:
     end
-  end
-  
-  def show
   end
   
   def edit
@@ -58,13 +55,10 @@ class Public::CommentsController < ApplicationController
     params.require(:comment).permit(:execution_status_id, :image, :comment_body)
   end
   
-  def monitoring
-     @comment = Comment.find(params[:id])
-  end
-
-  def prevent_url
-    if @comment.user_id != current_user.id
-      redirect_to root_path
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.email == 'guest@example.com'
+      redirect_to user_path(current_user) , notice: 'ゲストユーザーはコメントできません。'
     end
-  end
+  end  
 end
