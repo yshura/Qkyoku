@@ -1,5 +1,5 @@
 class Section < ApplicationRecord
-  has_many :posts
+  has_many :posts , dependent: :destroy
 
       # 未読件数カウント
   def count_unread_by_user(user)

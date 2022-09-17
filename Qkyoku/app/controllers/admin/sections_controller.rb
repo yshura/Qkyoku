@@ -2,6 +2,7 @@ class Admin::SectionsController < ApplicationController
     def index
       @sections = Section.all
       @section = Section.new
+      #@section_image = SectionImage.new
     end
     
     def create
@@ -28,6 +29,6 @@ class Admin::SectionsController < ApplicationController
     
     private
     def section_params
-        params.require(:section).permit(:name)
+        params.require(:section).permit(:name, :image)
     end
 end

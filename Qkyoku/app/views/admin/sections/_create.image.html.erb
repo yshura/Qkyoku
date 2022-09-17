@@ -1,0 +1,15 @@
+<div class='col-md-3 mt-3'>
+  <div class='card'>
+    <div class='mx-1 mt-4'>
+      <%= form_with model: section, url: admin_sections_path, method: :post, local:true do |f| %>
+        <div class='form-group'>
+          <%= f.label '画像' %>
+          <%= f.file_field :image, accept: 'image/*', class: 'form-control-file admin_image' %>
+        </div>
+        <div class='form-group mt-3'>
+          <%= f.submit '追加', class: 'btn btn-outline-success' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

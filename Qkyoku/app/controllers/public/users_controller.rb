@@ -2,6 +2,7 @@ class Public::UsersController < ApplicationController
   
   def index
     @sections = Section.all
+    # @section_image = SectionImage.all
   end
   
   def show
