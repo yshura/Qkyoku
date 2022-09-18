@@ -25,12 +25,14 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 // import "channels"
 
-// ここから追加
 require("jquery")
-// こまで追加
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-console.log('Hello World from Webpacker')
+// 戻る・進むをクリックすると自動的にリロード
+window.addEventListener('popstate', function (e) {
+  window.location.reload();
+});
+
