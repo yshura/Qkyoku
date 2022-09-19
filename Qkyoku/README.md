@@ -15,7 +15,13 @@
 工場作業員
 
 ### 主な利用シーン
+<<<<<<< HEAD
 不具合等発生時/改善・修繕時
+=======
+
+不具合等発生時/改善,修繕時
+
+>>>>>>> bb0eab4a8c37362ec27f63d2f90d8b059166cd5c
 
 ## 設計書
 ER図 https://app.diagrams.net/#G1hjVt2NTsH7wQdCV_SJhNRyJI-_7puw89<br>
