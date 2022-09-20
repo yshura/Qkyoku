@@ -3,6 +3,11 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all.page(params[:page]).per(10)
+    if params[:latest]
+      @posts = Post.all.latest.page(params[:page]).per(10)
+    elsif params[:old]
+      @posts = Post.all.old.page(params[:page]).per(10)
+    end
   end
   
   def new
@@ -47,7 +52,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to public_posts_path(@post), notice: '投稿を削除しました'
+    redirect_to public_user_path(@post.user), notice: '投稿を削除しました'
   end
   
   def search

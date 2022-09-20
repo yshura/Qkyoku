@@ -4,6 +4,9 @@ class Post < ApplicationRecord
     belongs_to :user
     belongs_to :section
     
+    scope :latest, -> {order(created_at: :desc)}
+    scope :old, -> {order(created_at: :asc)}
+    
     validates :title, presence: :true
     validates :post_body, presence: :true
     
