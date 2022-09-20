@@ -31,7 +31,7 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-// 戻る・進むをクリックすると自動的にリロード
+// 戻るをクリックすると自動的にリロード
 window.addEventListener('popstate', function (e) {
   window.location.reload();
 });
