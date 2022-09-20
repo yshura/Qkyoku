@@ -1,6 +1,7 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:new, :edit]
+  before_action :redirect_to_user_path_if_comennt_nil, only: :edit
 
   def index
     @user = User.find(params[:user_id])
@@ -28,7 +29,6 @@ class Public::CommentsController < ApplicationController
   
   def edit
     session[:previous_url] = request.referer
-    @comment = Comment.find(params[:id])
     @post = Post.find(params[:post_id])
     @status = ExecutionStatus.all
   end
@@ -60,5 +60,10 @@ class Public::CommentsController < ApplicationController
     if current_user.email == 'guest@example.com'
       redirect_to public_post_path(params[:post_id]) , notice: 'ゲストユーザーはコメントできません。'
     end
-  end  
+  end 
+  
+  def redirect_to_user_path_if_comennt_nil
+    @comment = Comment.find_by(id: params[:id])
+    redirect_to public_user_path(current_user) if !@comment
+  end
 end
