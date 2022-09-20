@@ -12,5 +12,9 @@
     <% end %>
   </div>
 </div>
-<%= render 'layouts/back' %>
+<div class='mt-3 ml-3 mb-3'>
+  <%= link_to public_user_path(@user), class: 'text-dark' do %>
+    <i class="fas fa-angle-double-left"></i>前のページへ戻る
+  <% end %>
+</div>
   <%#= paginate @comments %>

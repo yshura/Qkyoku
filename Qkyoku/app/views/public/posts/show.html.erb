@@ -17,11 +17,10 @@
     </div>
   </div>
 </div>
-<div class='container card'>
+<div class='container card mb-5'>
   <div class='card-body'>
     <% @comments.each do |comment| %>
       <p><%= render 'comment.show', comment: comment, post: @post %></p>
     <% end %>
   </div>
 </div>
-<%= render 'layouts/back' %>
