@@ -3,19 +3,9 @@
       <div class='col-md-4 mt-4 mb-1'>
         <h2>投稿一覧</h2>
         <p>
-          <%#= form_with model: @post, url: public_posts_path, method: :get, local: true do |f| %>
-            <%#= f.select :keyword,[ ['投稿が新しい順', 'latest'],['投稿が古い順', 'old'] ] %>
-            <%#= f.submit %>
-          <%# end %>
-            <!--選択されなかった方の色を薄くする-->
-            <%# if latest: 'true' %>
-              <%= link_to '新しい順', public_posts_path(latest: 'true'), class: 'text-dark' %>
-              |<%= link_to '古い順', public_posts_path(old: 'true'), class: 'text-muted' %>
-            <%# else %>
-              <%#= link_to '新しい順', public_posts_path(latest: 'true'), class: 'text-muted' %>
-              <%#= link_to '古い順', public_posts_path(old: 'true'), class: 'text-dark' %>
-            <%# end %>
-        </p>
+          <!--選択されなかった方の色を薄くする-->
+          <%= link_to '新しい順', public_posts_path(latest: 'true'), class: (current_page?(public_posts_path(latest: 'true')) ? 'text-dark' : 'text-muted') %>
+          |<%= link_to '古い順', public_posts_path(old: 'true'), class: (current_page?(public_posts_path(old: 'true')) ? 'text-dark' : 'text-muted') %>
       </div>
       <p>
         <%= render 'index', posts: @posts %>
