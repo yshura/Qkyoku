@@ -11,7 +11,7 @@
     <%= comment.execution_status.name %>
   </p>
   <p class='col-md-6'>
-     <span class='badge badge-pill badge-secondary appearance'>
+    <span class='badge badge-pill badge-secondary appearance'>
       投稿日
     </span>
     <%= comment.created_at.strftime('%Y/%m/%d') %>
@@ -40,8 +40,8 @@
     </div>
   <% end %>
 </div>
-<div class='row'>
-<div id="favorite_buttons_<%= comment.id %>">
-  <%= render "public/favorites/favorite_btn", post: post, comment: comment %>
-</div>
+<div class='row ml-1'>
+  <div id="favorite_buttons_<%= comment.id %>">
+    <%= render "public/favorites/favorite_btn", post: post, comment: comment %>
+  </div>
 </div>
