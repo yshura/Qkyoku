@@ -20,7 +20,7 @@
 <div class='container card'>
   <div class='card-body'>
     <% @comments.each do |comment| %>
-      <p><%= render 'comment.show', comment: comment, post: @post %></p>
+      <p><%= render 'comment.show', comment: comment, post: @post, user: @user %></p>
     <% end %>
   </div>
 </div>
