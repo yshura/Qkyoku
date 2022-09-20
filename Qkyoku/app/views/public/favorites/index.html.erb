@@ -43,7 +43,7 @@
         <% end %>
       </div>
       <div id="favorite_buttons_<%= favorite.comment.id %>">
-      　<div style='font-size: 25px'><%= render 'public/favorites/favorite_btn', post: favorite.comment.post.id, comment: favorite.comment %></div>
+      　<%= render 'public/favorites/favorite_btn', post: favorite.comment.post.id, comment: favorite.comment %>
       </div>
     <% end %>
   </div>
