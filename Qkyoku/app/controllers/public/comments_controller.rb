@@ -22,11 +22,12 @@ class Public::CommentsController < ApplicationController
       redirect_to public_post_path(@post), notice: '投稿完了しました'
     else
       @status = ExecutionStatus.all
-      render :new, notice:
+      render :new
     end
   end
   
   def edit
+    session[:previous_url] = request.referer
     @comment = Comment.find(params[:id])
     @post = Post.find(params[:post_id])
     @status = ExecutionStatus.all
@@ -47,7 +48,7 @@ class Public::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to public_post_path(@post), notice: 'コメントを削除しました'
+    redirect_to session[:previous_url], notice: 'コメントを削除しました'
   end
   
   private
