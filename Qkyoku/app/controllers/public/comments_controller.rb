@@ -58,7 +58,7 @@ class Public::CommentsController < ApplicationController
   
   def ensure_guest_user
     if current_user.email == 'guest@example.com'
-      redirect_to public_post_path(params[:post_id]) , notice: 'ゲストユーザーはコメントできません。'
+      redirect_to public_post_path(params[:post_id]) , notice: 'ゲストユーザーはコメントできません'
     end
   end 
   
