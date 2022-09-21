@@ -57,3 +57,15 @@ h5{
 .appearance {
   font-size :12px;
 }
+
+.pagination>li>a {          
+  border: none;   
+  color: #696969; 
+  background: #EEEEEE; 
+}
+
+
+.pagination>.active>a {     
+  background: #EEEEEE;  
+}
+
