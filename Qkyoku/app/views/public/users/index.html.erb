@@ -2,7 +2,9 @@
   <div class='row'>
     <%= render 'public/sections/index' %>
     <div class='col-md-8 offset-md-1 mt-5'>
-      <%= image_tag 'kouteizu.jpg', class:"img-fluid" %>
+      <% @workplaces.each do |workplace| %>
+        <%= image_tag workplace.image, size: '700x450' %>
+      <% end %>
     </div>
   </div>
 </div>

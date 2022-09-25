@@ -21,11 +21,12 @@
               <% end %>
             </td>
             <td><%= user.email %></td>
-            <td><% if user.is_deleted == true %>
-            <span class='text-secondary'><strong>退会</strong></span>
-            <% else %>
-            <span class='text-success'><strong>有効</strong></span>
-            <% end %>
+            <td>
+              <% if user.is_deleted == true %>
+                <span class='text-secondary'><strong>退会</strong></span>
+              <% else %>
+                <span class='text-success'><strong>有効</strong></span>
+              <% end %>
             </td>
           </tr>
           <% end %>
