@@ -28,6 +28,12 @@ execution_statuses = ExecutionStatus.create!(
   ]
 )
 
+workplaces = Workplace.create!(
+  [
+    {name: '1P職場', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/kouteizu.jpg"), filename: 'kouteizu.jpg'), is_checked: true}
+  ]  
+)
+
 users = User.create!(
   [
     {email: 'sat@test.com', name: '佐藤', password: 'ssttuu'},

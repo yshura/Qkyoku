@@ -2,7 +2,7 @@ class Public::UsersController < ApplicationController
   
   def index
     @sections = Section.all
-    # @section_image = SectionImage.all
+    @workplaces = Workplace.where(is_checked: true)
   end
   
   def show

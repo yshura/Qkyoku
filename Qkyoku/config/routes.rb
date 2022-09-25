@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'workplaces/index'
+  get 'workplaces/edit'
   devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
     sessions: 'admin/sessions'
   }
@@ -36,6 +38,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :destroy]
     resources :sections, only:[:index, :edit, :create, :update, :destroy]
     resources :execution_statuses, only:[:index, :edit, :create, :update, :destroy]
+    resources :workplaces, only:[:index, :edit, :create, :update, :destroy]
     resources :users, only:[:index, :show, :edit, :update] do
       resources :comments, only: [:index,:destroy]
     end
