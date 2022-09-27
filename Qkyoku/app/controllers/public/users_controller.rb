@@ -15,7 +15,7 @@ class Public::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to public_user_path(@user), notice: '更新しました'
     else
-      render 'edit'
+      redirect_to public_user_path(@user), notice: '名前を入力してください'
     end
   end
   
