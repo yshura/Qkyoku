@@ -24,6 +24,9 @@
                 投稿<i class="far fa-edit"></i>
               <%end %>
             </li>
+            <% if unchecked_notifications.any? %>
+                <i class='fa fa-circle' style='color: red;'></i>
+            <% end %>
             <li>
               <%= link_to 'マイページ', public_user_path(current_user), class: 'nav-link text-light' %>
             </li>

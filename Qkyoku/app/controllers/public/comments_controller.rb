@@ -19,6 +19,7 @@ class Public::CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
+      @comment.create_notification_comment(current_user)
       redirect_to public_post_path(@post), notice: '投稿完了しました'
     else
       @status = ExecutionStatus.all

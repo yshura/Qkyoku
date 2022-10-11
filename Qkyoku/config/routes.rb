@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     patch '/withdrawal'=>'users#withdrawal'
     get '/unsubscribe'=>'users#unsubscribe'
     resources :sections, only: [:show]
+    resources :notifications, only: :index
     resources :users, only:[:index, :show, :update] do
       resources :favorites, only: [:index]
       resources :comments, only: [:index]
