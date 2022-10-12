@@ -25,7 +25,7 @@ class Comment < ApplicationRecord
 	def create_notification_favorite(current_user)
     notification = current_user.active_notifications.new(
       favorite_id: id,
-      visited_id: favorite.comment.user_id,
+      visited_id: comment.user_id,
       action: 'favorite'
     )
     notification.save if notification.valid?
