@@ -2,14 +2,14 @@
   <% visiter = notification.visiter %>
   <% comment = notification.comment %>
   
-  <div class='user-view clearfix'>
+  <div class='notification-box'>
     <%= notification_form(notification) %>
-    <span class='moderate-font'>
+    <span>
       <%= " (#{time_ago_in_words(notification.created_at)} 前)" %>
     </span>
     <br>
     <% if !@comment.nil? %>
-      <p class='moderate-font text-center' style='color: #C0C0C0;'><%= @comment %></p>
+      <p class='moderate-font text-center' style='color: #708090;'><%= @comment %></p>
     <% end %>
   </div>
 <% end %>
