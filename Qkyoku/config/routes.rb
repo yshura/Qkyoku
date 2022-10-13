@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get '/unsubscribe'=>'users#unsubscribe'
     resources :sections, only: [:show]
     resources :notifications, only: [:index]
+    delete 'notifications/destroy_all' => 'notifications#destroy_all'
     resources :users, only:[:index, :show, :update] do
       resources :favorites, only: [:index]
       resources :comments, only: [:index]

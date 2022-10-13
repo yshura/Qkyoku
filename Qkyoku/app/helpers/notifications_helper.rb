@@ -7,10 +7,10 @@ module NotificationsHelper
 	  @visiter_comment = notification.comment_id
 	  case notification.action
 	    when 'favorite' then
-	      tag.a(notification.visiter.name, href:public_user_path(@visiter), style:'font-weight: bold;')+'が'+tag.a('あなたのコメント', style:'font-weight: bold;')+'にいいねしました'
+	      tag.a(notification.visiter.name, href:public_user_path(@visiter), style:'font-weight: bold;', class: 'text-dark')+'が'+tag.a('あなたのコメント', style:'font-weight: bold;')+'にいいねしました'
 	    when 'comment' then
 	    	@comment = Comment.find_by(id: @visiter_comment)&.comment_body
-	    	tag.a(@visiter.name, href:public_user_path(@visiter), style:'font-weight: bold;')+'が'+tag.a('あなたの投稿', style:'font-weight: bold;')+'にコメントしました'
+	    	tag.a(@visiter.name, href:public_user_path(@visiter), style:'font-weight: bold;', class: 'text-dark')+'が'+tag.a('あなたの投稿', style:'font-weight: bold;')+'にコメントしました'
 	  end
 	end
   
