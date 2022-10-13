@@ -27,7 +27,7 @@
         <% end %>
         <% if @user == current_user %>
           <div class='mx-1'>
-            <%= link_to public_notifications_path, class: 'btn btn-secondary btn-block' do %>
+            <%= link_to public_user_notifications_path(@user), class: 'btn btn-secondary btn-block' do %>
               <% if unchecked_notifications.any? %>
                 <i class='fa fa-circle' style='color: red;'></i>
               <% end %>

@@ -12,7 +12,7 @@ class Public::FavoritesController < ApplicationController
     @post = @comment.post
     favorite = current_user.favorites.new(comment_id: @comment.id)
     favorite.save
-    # favorite.create_notification_favorite(current_user)
+    @comment.create_notification_favorite(current_user)
     logger.info favorite.errors.inspect
   end
   

@@ -2,10 +2,12 @@
   <div class='row'>
     <div class='col-md-8 mt-4 mb-3 mx-auto'>
       <h2>通知</h2>
-      <%= link_to public_notifications_destroy_all_path, class: 'text-dark', method: :delete do %>
-        <i class='fas fa-trash' style='color: black;'></i>
-        <h7>全削除</h7>
-      <% end %>
+      <div class='dust-box'>
+        <%= link_to public_notifications_destroy_all_path, class: 'text-dark', method: :delete do %>
+          <i class='fas fa-trash' style='color: black;'></i>
+          <h7>全削除</h7>
+        <% end %>
+      </div>
       <hr>
       <% if @notifications.exists? %>
         <div>
@@ -14,9 +16,16 @@
       <% else %>
         <p>通知はありません</p>
       <% end %>
-      <div class='mt-3' style='margin:0 auto;'>
-        <%= paginate @notifications %>
-      </div>
     </div>
   </div>
+  <div class='row'>
+    <div class='mt-3' style='margin:0 auto;'>
+      <%= paginate @notifications %>
+    </div>
+  </div>
+</div>
+<div class='mt-3 ml-3 mb-3'>
+  <%= link_to public_user_path(@user), class: 'text-dark' do %>
+    <i class="fas fa-angle-double-left"></i>前のページへ戻る
+  <% end %>
 </div>
