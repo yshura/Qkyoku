@@ -37,3 +37,5 @@ window.addEventListener('popstate', function (e) {
   window.location.reload();
 });
 
+// 検索窓
+document.addEventListener("touchstart", function(){}, true);
