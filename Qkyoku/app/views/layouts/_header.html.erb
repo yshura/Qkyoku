@@ -13,6 +13,17 @@
         <ul class='navbar-nav ml-auto'>
           <!--ユーザーログイン後のヘッダー-->
           <% if user_signed_in? %>
+            <!--<li class='mt-1'>-->
+            <!--  <form class="search-container" action="search_public_posts_path",local='true'>-->
+            <!--    <input id="search-box" type="text" class="search-box" name="keyword" />-->
+            <!--    <label for="search-box">-->
+            <!--      <span class="glyphicon glyphicon-search search-icon">-->
+            <!--        <i class='fas fa-search color: white;'></i>-->
+            <!--      </span>-->
+            <!--    </label>-->
+            <!--    <input type="submit" id="search-submit" />-->
+            <!--  </form>-->
+            <!--</li>-->
             <li>
               <%= link_to 'HOME', public_users_path, class: 'nav-link text-light' %>
             </li>
@@ -24,25 +35,32 @@
                 投稿<i class="far fa-edit"></i>
               <%end %>
             </li>
-            <% if unchecked_notifications.any? %>
-                <i class='fa fa-circle' style='color: red;'></i>
-            <% end %>
+            <%# if unchecked_notifications.any? %>
+                <!--<i class='fa fa-circle' style='color: red;'></i>-->
+            <%# end %>
             <li>
-              <%= link_to 'マイページ', public_user_path(current_user), class: 'nav-link text-light' %>
+              <% if unchecked_notifications.any? %>
+                <div class='news'>
+                </div>
+              <% end %>
+                <%= link_to 'マイページ', public_user_path(current_user), class: 'nav-link text-light' %>
             </li>
             <li>
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
             </li>
             <li class='mt-1'>
-              <div id='search-wrap'>
-                <%= form_with url: search_public_posts_path, local: true, method: :get do |f| %>
-                  <%= f.text_field :keyword, placeholder: 'キーワードを入力', id: 'search-text' %>
-                  <%= f.button :type => 'submit', style: 'border-style:none;' do %>
-                    <i class='fas fa-search color: white;'></i>
+              <div class='search-wrapper'>
+                <div class='input-holder'>
+                  <%= form_with url: search_public_posts_path, local: true, method: :get do |f| %>
+                    <%= f.text_field :keyword, placeholder: 'キーワードを入力', class: 'search-input' %>
+                    <%= f.button :type => 'submit', style: 'border-style:none;', class: 'search-icon1',onclick: 'searchToggle(this, event);' do %>
+                      <i class='fas fa-search'></i>
+                    <% end %>
                   <% end %>
-                <% end %>
+                </div>
+                <span class'close' onclick='searchToggle(this, event);'></span>
               </div>
-            </li>
+            </li> 
           <!--管理者ログイン後のヘッダー-->
           <% elsif admin_signed_in? %>
             <li>

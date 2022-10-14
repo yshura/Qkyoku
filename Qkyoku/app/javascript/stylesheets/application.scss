@@ -77,36 +77,65 @@ h5{
   text-align: right;
 }
 
-@charset "utf-8";
-
-/*========= レイアウトのためのCSS ===============*/
-
-body{
-  background:#ccc;
+// 通知マーク
+.news {
+  position: relative;
 }
 
-// #search-wrap {
-//   position: absolute;
-//   z-index: 2;
-//   top:10px;
-//   right:10px;
-// }
+.news::after {
+  content: "！";       
+  position: absolute;  
+  top: 1px;          
+  right: 1px;   
+  color: #FFF;       
+  line-height: 20px;  
+  font-weight: bold; 
+  font-size: 0%;
+  text-align: center;  
+  width: 10px;   
+  height: 10px;
+  background: #F00;     
+  border-radius: 50%;  
+}
 
-// #search-text{
-//   -webkit-appearance:none;
-//   width: 60px;
-//   height: 60px;
-//     padding: 20px;
-//   border: none;
-//   background:#fff url("https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/7-2-3/img/icon_search.svg") no-repeat 17px center;/*虫眼鏡アイコンを背景に表示*/
-//   background-size: 25px 25px;
-//   transition: all 0.5s;
-//   outline: none;
-//   cursor: pointer;
-// }
+// 検索窓
+$tl: 0.6s;
 
-// #search-text:focus {
-//   width: 250px;/
-//   padding: 20px 0 20px 60px;
-//   box-shadow: 0 2px rgba(6,0,1,.26);
-// }
+.search-box {
+  transition: width $tl, border-radius $tl, background $tl, box-shadow $tl;
+  width: 40px;height: 40px;
+  border-radius: 20px;border: none;
+  cursor: pointer;
+  background: rgb(235, 235, 235);
+  & + label .search-icon {    color: black    }
+  &:hover {
+    color: white;
+    background: rgb(200, 200, 200);
+    box-shadow: 0 0 0 5px rgb(61, 71, 82);
+    & + label .search-icon {    color: white    }
+  }
+  &:focus {
+    transition: width $tl cubic-bezier(0,1.22,.66,1.39), border-radius $tl, background $tl;
+    border: none;outline: none;
+    box-shadow: none;
+    padding-left: 15px;
+    cursor: text;
+    width: 300px;
+    border-radius: auto;
+    background: rgb(235, 235, 235);
+    color: black;
+    & + label .search-icon {    color: black;    }
+  }
+  &:not(:focus) {    text-indent:-5000px;    } // for more-graceful falling back (:not browsers likely support indent)
+}
+
+#search-submit {
+  position: relative;left: -5000px;
+}
+
+.search-icon {
+  position: relative;
+  left: -224px;
+  color: white;
+  cursor: pointer;
+}
