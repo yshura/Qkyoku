@@ -38,4 +38,4 @@ window.addEventListener('popstate', function (e) {
 });
 
 // 検索窓
-document.addEventListener("touchstart", function(){}, true);
+document.addEventListener('touchstart', function(){}, true);

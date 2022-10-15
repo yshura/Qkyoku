@@ -38,19 +38,19 @@
         <% end %>
         <div class='mt-2 mx-1'>
           <%= link_to public_user_favorites_path(@user), class: 'btn btn-info btn-block' do %>
-            <i class="fas fa-heart"></i>
+            <i class='fas fa-heart'></i>
           <% end %>
         </div>
         <div class='mt-2 mb-2 mx-1'>
           <%= link_to public_user_comments_path(@user), class: 'btn btn-primary btn-block' do %>
-            <i class="fas fa-comment-dots"></i>
+            <i class='fas fa-comment-dots'></i>
           <% end %>
         </div>
         <% if @user.email != 'guest@example.com' %>
           <% if @user == current_user %>
             <div class='mb-2 mx-1'>
               <%= link_to public_unsubscribe_path, class:'btn btn-danger btn-block' do %>
-                <i class="fas fa-sign-out-alt"></i>
+                <i class='fas fa-sign-out-alt'></i>
               <% end %>
             </div>
           <% end %>
