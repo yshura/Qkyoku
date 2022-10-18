@@ -50,8 +50,8 @@
               <div class='search-wrapper'>
                 <div class='input-holder'>
                   <%= form_with url: search_public_posts_path, local: true, method: :get do |f| %>
-                    <%= f.text_field :keyword, placeholder: 'キーワードを入力', class: 'search-input' %>
-                    <%= f.button :type => 'submit', style: 'border-style:none;', class: 'search-icon1',onclick: 'searchToggle(this, event);' do %>
+                    <%= f.text_field :keyword, placeholder: 'キーワードを入力' %>
+                    <%= f.button :type => 'submit', style: 'border-style:none;' do %>
                       <i class='fas fa-search'></i>
                     <% end %>
                   <% end %>
