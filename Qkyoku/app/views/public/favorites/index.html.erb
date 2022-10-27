@@ -31,7 +31,7 @@
         <div class='col-md-4'>
           <% if favorite.comment.image.present? %>
             <%= link_to favorite.comment.image, 'data-lightbox': favorite.comment.image do %>
-            　<%= image_tag favorite.comment.image, size: '300x200' %>
+            　<%= image_tag favorite.comment.image, class: 'show-img-300-200' %>
             <% end %>
           <% else %>
             <%= image_tag 'no_image.png', size: '300x200' %>
