@@ -12,7 +12,7 @@ class Users::SessionsController < Devise::SessionsController
   end
   
   def after_sign_in_path_for(resource)
-    public_users_path
+    users_path
   end
 
   # GET /resource/sign_in

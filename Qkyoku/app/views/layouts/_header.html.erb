@@ -26,13 +26,13 @@
             <!--  </form>-->
             <!--</li>-->
             <li>
-              <%= link_to 'HOME', public_users_path, class: 'nav-link text-light' %>
+              <%= link_to 'HOME', users_path, class: 'nav-link text-light' %>
             </li>
             <li>
-              <%= link_to '投稿一覧', public_posts_path, class: 'nav-link text-light' %>
+              <%= link_to '投稿一覧', posts_path, class: 'nav-link text-light' %>
             </li>
             <li>
-              <%= link_to new_public_post_path, class: 'nav-link text-light' do %>
+              <%= link_to new_post_path, class: 'nav-link text-light' do %>
                 投稿<i class="far fa-edit"></i>
               <%end %>
             </li>
@@ -41,7 +41,7 @@
                 <div class='news'>
                 </div>
               <% end %>
-                <%= link_to 'マイページ', public_user_path(current_user), class: 'nav-link text-light' %>
+                <%= link_to 'マイページ', user_path(current_user), class: 'nav-link text-light' %>
             </li>
             <li>
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
@@ -49,7 +49,7 @@
             <li class='mt-1'>
               <div class='search-wrapper'>
                 <div class='input-holder'>
-                  <%= form_with url: search_public_posts_path, local: true, method: :get do |f| %>
+                  <%= form_with url: search_posts_path, local: true, method: :get do |f| %>
                     <%= f.text_field :keyword, placeholder: 'キーワードを入力' %>
                     <%= f.button :type => 'submit', style: 'border-style:none;' do %>
                       <i class='fas fa-search'></i>

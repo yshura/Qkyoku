@@ -20,7 +20,7 @@ class Public::CommentsController < ApplicationController
     @comment.user_id = current_user.id
     if @comment.save
       @comment.create_notification_comment(current_user)
-      redirect_to public_post_path(@post), notice: '投稿完了しました'
+      redirect_to post_path(@post), notice: '投稿完了しました'
     else
       @status = ExecutionStatus.all
       render :new
@@ -38,7 +38,7 @@ class Public::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
-      redirect_to public_post_path(@post), notice: 'コメントを更新しました'
+      redirect_to post_path(@post), notice: 'コメントを更新しました'
     else
       @status = ExecutionStatus.all
       render :edit
@@ -59,7 +59,7 @@ class Public::CommentsController < ApplicationController
   
   def ensure_guest_user
     if current_user.email == 'guest@example.com'
-      redirect_to public_post_path(params[:post_id]) , notice: 'ゲストユーザーはコメントできません'
+      redirect_to post_path(params[:post_id]) , notice: 'ゲストユーザーはコメントできません'
     end
   end 
   

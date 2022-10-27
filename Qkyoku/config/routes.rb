@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
   
-  namespace :public do
+  scope module: :public do
     get '/about'=>'homes#about'
     patch '/withdrawal'=>'users#withdrawal'
     get '/unsubscribe'=>'users#unsubscribe'

@@ -3,7 +3,7 @@
     <ul class='list-group list-group-flush'>
       <% @sections.each do |section| %>
         <li class='list-group-item'>
-          <%= link_to public_section_path(section), class: 'text-dark' do %>
+          <%= link_to section_path(section), class: 'text-dark' do %>
             <%= section.name %>
           <% end %>
           <span class="badge badge-pill badge-danger">

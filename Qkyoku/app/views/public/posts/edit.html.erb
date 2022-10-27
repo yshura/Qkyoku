@@ -5,7 +5,7 @@
       <div class='card'>
         <div class='card-body'>
           <%= render 'layouts/error', model: @post %>
-          <%= form_with model: @post, url: public_post_path(@post), method: :patch, local:true do |f| %>
+          <%= form_with model: @post, url: post_path(@post), method: :patch, local:true do |f| %>
             <div class='form-group'>
               <%= f.label '工程', for: 'section_select' %>
               <%= f.collection_select :section_id, @sections, :id, :name, {include_blank: '--工程を選択--'}, class: 'form-control', id: 'section_select' %>
@@ -24,7 +24,7 @@
             </div>
             <%= f.submit '投稿', class: 'btn btn-outline-success' %>
             <p class='mt-2'>
-              <%= link_to '削除', public_post_path(@post), method: :delete, class: 'btn btn-outline-danger' %>
+              <%= link_to '削除', post_path(@post), method: :delete, class: 'btn btn-outline-danger' %>
             </p>
           <% end %>
         </div>
