@@ -4,8 +4,8 @@
       <h2>投稿一覧</h2>
       <p>
         <!--選択されなかった方の色を薄くする-->
-        <%= link_to '新しい順', public_posts_path(latest: 'true'), class: (current_page?(public_posts_path(latest: 'true')) ? 'text-dark' : 'text-muted') %>
-        |<%= link_to '古い順', public_posts_path(old: 'true'), class: (current_page?(public_posts_path(old: 'true')) ? 'text-dark' : 'text-muted') %>
+        <%= link_to '新しい順', posts_path(latest: 'true'), class: (current_page?(posts_path(latest: 'true')) ? 'text-dark' : 'text-muted') %>
+        |<%= link_to '古い順', posts_path(old: 'true'), class: (current_page?(posts_path(old: 'true')) ? 'text-dark' : 'text-muted') %>
     </div>
     <p>
       <%= render 'index', posts: @posts %>

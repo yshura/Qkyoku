@@ -14,10 +14,10 @@
         <div class='col-md-12 mt-4 mx-auto text-center'>
           <div class='row'>
             <div class='col'>
-              <%= link_to 'はい', public_withdrawal_path, class:'btn btn-danger btn-block', method: :patch %>
+              <%= link_to 'はい', withdrawal_path, class:'btn btn-danger btn-block', method: :patch %>
             </div>
             <div class="col">
-              <%= link_to 'いいえ', public_user_path(current_user), class:'btn btn-primary btn-block' %>
+              <%= link_to 'いいえ', user_path(current_user), class:'btn btn-primary btn-block' %>
             </div> 
           </div>
         </div>

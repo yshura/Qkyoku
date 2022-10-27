@@ -13,9 +13,9 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to public_user_path(@user), notice: '更新しました'
+      redirect_to user_path(@user), notice: '更新しました'
     else
-      redirect_to public_user_path(@user), notice: '名前を入力してください'
+      redirect_to user_path(@user), notice: '名前を入力してください'
     end
   end
   

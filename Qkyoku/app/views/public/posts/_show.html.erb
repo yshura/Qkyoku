@@ -1,6 +1,6 @@
 <div class='row'>
   <p class='col-md-2'>
-    <%= link_to public_user_path(post.user), class: 'text-dark' do %>
+    <%= link_to user_path(post.user), class: 'text-dark' do %>
       <%= post.user.name %>
     <% end %>
   </p>
@@ -35,7 +35,7 @@
   </div>
   <% if @post.user == current_user %>
     <div class='col-1'>
-      <%= link_to '編集', edit_public_post_path(post), method: :get, class: 'btn btn-outline-success' %>
+      <%= link_to '編集', edit_post_path(post), method: :get, class: 'btn btn-outline-success' %>
     </div>
   <% end %>
 </div>
@@ -43,6 +43,6 @@
   <% if @user.email == 'guest@example.com' %>
     <div class='btn btn-outline-primary'>コメントするには新規登録してください。</div>
   <% else %>
-    <div class='col-2'><%=link_to 'コメント', new_public_post_comment_path(post), class: 'btn btn-outline-primary' %></div>
+    <div class='col-2'><%=link_to 'コメント', new_post_comment_path(post), class: 'btn btn-outline-primary' %></div>
   <% end %>
 </div>

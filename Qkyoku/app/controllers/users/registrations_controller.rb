@@ -4,7 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :ensure_normal_user, only: %i[update destroy]
   
   def after_sign_up_path_for(resource)
-    public_users_path
+    users_path
   end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]

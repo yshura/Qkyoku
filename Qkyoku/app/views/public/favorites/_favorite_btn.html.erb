@@ -1,6 +1,6 @@
 <% favorite = comment.favorited_by(current_user) %>
   <% if favorite %>
-    <%= link_to public_post_comment_favorite_path(post, comment, favorite), method: :delete, remote: true do %>
+    <%= link_to post_comment_favorite_path(post, comment, favorite), method: :delete, remote: true do %>
       <span style='color:red; font-size: 25px'>♥<%= comment.favorites.count %></span>
     <% end %>
   <% else %>
@@ -8,7 +8,7 @@
   <% if current_user.email == 'guest@example.com' %>
     <span style='font-size: 25px'>♡<%= comment.favorites.count %>︎</span>
   <% else %>
-    <%= link_to public_post_comment_favorites_path(post, comment), method: :post, remote: true do %>
+    <%= link_to post_comment_favorites_path(post, comment), method: :post, remote: true do %>
       <span style='font-size: 25px'>♡<%= comment.favorites.count %>︎</span>
     <% end %>
   <% end %>
