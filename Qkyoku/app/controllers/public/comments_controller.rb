@@ -1,6 +1,7 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:new, :edit]
+  before_action :correct_comment,only: [:edit]
 
   def index
     @user = User.find(params[:user_id])
@@ -62,5 +63,12 @@ class Public::CommentsController < ApplicationController
       redirect_to post_path(params[:post_id]) , notice: 'ゲストユーザーはコメントできません'
     end
   end 
+  
+  def correct_comment
+      @comment = Comment.find(params[:id])
+    unless @comment.user.id == current_user.id
+      redirect_to posts_path
+    end
+  end
   
 end

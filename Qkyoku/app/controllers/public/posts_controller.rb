@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_post,only: [:edit]
 
   def index
     @posts = Post.all.page(params[:page]).per(10)
@@ -67,6 +68,13 @@ class Public::PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :post_body, :image, :section_id)
+  end
+  
+  def correct_post
+      @post = Post.find(params[:id])
+    unless @post.user.id == current_user.id
+      redirect_to posts_path
+    end
   end
   
 end
