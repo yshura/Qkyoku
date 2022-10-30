@@ -31,4 +31,4 @@ ER図 https://app.diagrams.net/#G1hjVt2NTsH7wQdCV_SJhNRyJI-_7puw89<br>
 
 ## 使用素材
 - 画像素材  TOP画面 https://pixabay.com/ja/images/search/%E3%83%9E%E3%83%84%E3%83%80/
--           No-Image画像　https://schoolshop-lab.jp/noimage%E4%BA%BA
+-           Mo-Image画像 https://schoolshop-lab.jp/noimage%E4%BA%BA
