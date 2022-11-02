@@ -1,4 +1,6 @@
 class Admin::CommentsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @user = User.find(params[:user_id])
     @comments = @user.comments.all.page(params[:page]).per(10)

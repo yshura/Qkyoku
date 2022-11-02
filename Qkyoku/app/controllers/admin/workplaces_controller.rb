@@ -1,4 +1,6 @@
 class Admin::WorkplacesController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @workplaces = Workplace.all
     @workplace = Workplace.new
