@@ -1,4 +1,6 @@
 class Admin::ExecutionStatusesController < ApplicationController
+  before_action :authenticate_user!
+  
     def index
       @execution_statuses = ExecutionStatus.all
       @execution_status = ExecutionStatus.new
